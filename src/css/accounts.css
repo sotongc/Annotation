@@ -1,0 +1,8 @@
+@charset "utf-8";
+
+.con{width:1200px;margin:20px auto;height:700px;}
+
+.a-management{width:670px;float:left;margin-right:20px;}
+.a-monitor{width:510px;float:left;}
+
+.pagination{margin:20px 0px 0px;}

@@ -1,0 +1,616 @@
+{
+	"list":[
+		{
+			"id":" cb95e4de1acc8f97",
+			"country":"US",
+			"domain":"bbc.co.uk",
+			"seed":"http://www.bbc.co.uk/sports",
+			"category":"sports",
+			"patterns":[
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"regexp",
+					"content":"/\\.bbc.co.uk$/"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"xpath",
+					"content":"/bookstore/book[1]"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"regexp",
+					"content":"/\\.bbc.co.uk$/"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"xpath",
+					"content":"/bookstore/book[1]"
+				}
+			],
+			"desc":"some description here ..."
+		},
+		{
+			"id":" cb95e4de1acc8f97",
+			"country":"US",
+			"domain":"bbc.co.uk",
+			"seed":"http://www.bbc.co.uk/sports",
+			"category":"sports",
+			"patterns":[
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"regexp",
+					"content":"/\\.bbc.co.uk$/"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"xpath",
+					"content":"/bookstore/book[1]"
+				}
+			],
+			"desc":"some description here ..."
+		},
+		{
+			"id":" cb95e4de1acc8f97",
+			"country":"US",
+			"domain":"bbc.co.uk",
+			"seed":"http://www.bbc.co.uk/sports",
+			"category":"sports",
+			"patterns":[
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"regexp",
+					"content":"/\\.bbc.co.uk$/"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"xpath",
+					"content":"/bookstore/book[1]"
+				}
+			],
+			"desc":"some description here ..."
+		},
+		{
+			"id":" cb95e4de1acc8f97",
+			"country":"US",
+			"domain":"bbc.co.uk",
+			"seed":"http://www.bbc.co.uk/sports",
+			"category":"sports",
+			"patterns":[
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"regexp",
+					"content":"/\\.bbc.co.uk$/"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"xpath",
+					"content":"/bookstore/book[1]"
+				}
+			],
+			"desc":"some description here ..."
+		},
+		{
+			"id":" cb95e4de1acc8f97",
+			"country":"US",
+			"domain":"bbc.co.uk",
+			"seed":"http://www.bbc.co.uk/sports",
+			"category":"sports",
+			"patterns":[
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"regexp",
+					"content":"/\\.bbc.co.uk$/"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"xpath",
+					"content":"/bookstore/book[1]"
+				}
+			],
+			"desc":"some description here ..."
+		},
+		{
+			"id":" cb95e4de1acc8f97",
+			"country":"US",
+			"domain":"bbc.co.uk",
+			"seed":"http://www.bbc.co.uk/sports",
+			"category":"sports",
+			"patterns":[
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"regexp",
+					"content":"/\\.bbc.co.uk$/"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"xpath",
+					"content":"/bookstore/book[1]"
+				}
+			],
+			"desc":"some description here ..."
+		},
+		{
+			"id":" cb95e4de1acc8f97",
+			"country":"US",
+			"domain":"bbc.co.uk",
+			"seed":"http://www.bbc.co.uk/sports",
+			"category":"sports",
+			"patterns":[
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"regexp",
+					"content":"/\\.bbc.co.uk$/"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"xpath",
+					"content":"/bookstore/book[1]"
+				}
+			],
+			"desc":"some description here ..."
+		},
+		{
+			"id":" cb95e4de1acc8f97",
+			"country":"US",
+			"domain":"bbc.co.uk",
+			"seed":"http://www.bbc.co.uk/sports",
+			"category":"sports",
+			"patterns":[
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"regexp",
+					"content":"/\\.bbc.co.uk$/"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"xpath",
+					"content":"/bookstore/book[1]"
+				}
+			],
+			"desc":"some description here ..."
+		},
+		{
+			"id":" cb95e4de1acc8f97",
+			"country":"US",
+			"domain":"bbc.co.uk",
+			"seed":"http://www.bbc.co.uk/sports",
+			"category":"sports",
+			"patterns":[
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"regexp",
+					"content":"/\\.bbc.co.uk$/"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"xpath",
+					"content":"/bookstore/book[1]"
+				}
+			],
+			"desc":"some description here ..."
+		},
+		{
+			"id":" cb95e4de1acc8f97",
+			"country":"US",
+			"domain":"bbc.co.uk",
+			"seed":"http://www.bbc.co.uk/sports",
+			"category":"sports",
+			"patterns":[
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"regexp",
+					"content":"/\\.bbc.co.uk$/"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"xpath",
+					"content":"/bookstore/book[1]"
+				}
+			],
+			"desc":"some description here ..."
+		},
+		{
+			"id":" cb95e4de1acc8f97",
+			"country":"US",
+			"domain":"bbc.co.uk",
+			"seed":"http://www.bbc.co.uk/sports",
+			"category":"sports",
+			"patterns":[
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"regexp",
+					"content":"/\\.bbc.co.uk$/"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"xpath",
+					"content":"/bookstore/book[1]"
+				}
+			],
+			"desc":"some description here ..."
+		},
+		{
+			"id":" cb95e4de1acc8f97",
+			"country":"US",
+			"domain":"bbc.co.uk",
+			"seed":"http://www.bbc.co.uk/sports",
+			"category":"sports",
+			"patterns":[
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"regexp",
+					"content":"/\\.bbc.co.uk$/"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"xpath",
+					"content":"/bookstore/book[1]"
+				}
+			],
+			"desc":"some description here ..."
+		},
+		{
+			"id":" cb95e4de1acc8f97",
+			"country":"US",
+			"domain":"bbc.co.uk",
+			"seed":"http://www.bbc.co.uk/sports",
+			"category":"sports",
+			"patterns":[
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"regexp",
+					"content":"/\\.bbc.co.uk$/"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"xpath",
+					"content":"/bookstore/book[1]"
+				}
+			],
+			"desc":"some description here ..."
+		},
+		{
+			"id":" cb95e4de1acc8f97",
+			"country":"US",
+			"domain":"bbc.co.uk",
+			"seed":"http://www.bbc.co.uk/sports",
+			"category":"sports",
+			"patterns":[
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"regexp",
+					"content":"/\\.bbc.co.uk$/"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"xpath",
+					"content":"/bookstore/book[1]"
+				}
+			],
+			"desc":"some description here ..."
+		},
+		{
+			"id":" cb95e4de1acc8f97",
+			"country":"US",
+			"domain":"bbc.co.uk",
+			"seed":"http://www.bbc.co.uk/sports",
+			"category":"sports",
+			"patterns":[
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"regexp",
+					"content":"/\\.bbc.co.uk$/"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"xpath",
+					"content":"/bookstore/book[1]"
+				}
+			],
+			"desc":"some description here ..."
+		},
+		{
+			"id":" cb95e4de1acc8f97",
+			"country":"US",
+			"domain":"bbc.co.uk",
+			"seed":"http://www.bbc.co.uk/sports",
+			"category":"sports",
+			"patterns":[
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"regexp",
+					"content":"/\\.bbc.co.uk$/"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"xpath",
+					"content":"/bookstore/book[1]"
+				}
+			],
+			"desc":"some description here ..."
+		},
+		{
+			"id":" cb95e4de1acc8f97",
+			"country":"US",
+			"domain":"bbc.co.uk",
+			"seed":"http://www.bbc.co.uk/sports",
+			"category":"sports",
+			"patterns":[
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"regexp",
+					"content":"/\\.bbc.co.uk$/"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"xpath",
+					"content":"/bookstore/book[1]"
+				}
+			],
+			"desc":"some description here ..."
+		},
+		{
+			"id":" cb95e4de1acc8f97",
+			"country":"US",
+			"domain":"bbc.co.uk",
+			"seed":"http://www.bbc.co.uk/sports",
+			"category":"sports",
+			"patterns":[
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"regexp",
+					"content":"/\\.bbc.co.uk$/"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"xpath",
+					"content":"/bookstore/book[1]"
+				}
+			],
+			"desc":"some description here ..."
+		},
+		{
+			"id":" cb95e4de1acc8f97",
+			"country":"US",
+			"domain":"bbc.co.uk",
+			"seed":"http://www.bbc.co.uk/sports",
+			"category":"sports",
+			"patterns":[
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"regexp",
+					"content":"/\\.bbc.co.uk$/"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"xpath",
+					"content":"/bookstore/book[1]"
+				}
+			],
+			"desc":"some description here ..."
+		},
+		{
+			"id":" cb95e4de1acc8f97",
+			"country":"US",
+			"domain":"bbc.co.uk",
+			"seed":"http://www.bbc.co.uk/sports",
+			"category":"sports",
+			"patterns":[
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"regexp",
+					"content":"/\\.bbc.co.uk$/"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"xpath",
+					"content":"/bookstore/book[1]"
+				}
+			],
+			"desc":"some description here ..."
+		},
+		{
+			"id":" cb95e4de1acc8f97",
+			"country":"US",
+			"domain":"bbc.co.uk",
+			"seed":"http://www.bbc.co.uk/sports",
+			"category":"sports",
+			"patterns":[
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"regexp",
+					"content":"/\\.bbc.co.uk$/"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"xpath",
+					"content":"/bookstore/book[1]"
+				}
+			],
+			"desc":"some description here ..."
+		},
+		{
+			"id":" cb95e4de1acc8f97",
+			"country":"US",
+			"domain":"bbc.co.uk",
+			"seed":"http://www.bbc.co.uk/sports",
+			"category":"sports",
+			"patterns":[
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"regexp",
+					"content":"/\\.bbc.co.uk$/"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"xpath",
+					"content":"/bookstore/book[1]"
+				}
+			],
+			"desc":"some description here ..."
+		},
+		{
+			"id":" cb95e4de1acc8f97",
+			"country":"US",
+			"domain":"bbc.co.uk",
+			"seed":"http://www.bbc.co.uk/sports",
+			"category":"sports",
+			"patterns":[
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"regexp",
+					"content":"/\\.bbc.co.uk$/"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"xpath",
+					"content":"/bookstore/book[1]"
+				}
+			],
+			"desc":"some description here ..."
+		},
+		{
+			"id":" cb95e4de1acc8f97",
+			"country":"US",
+			"domain":"bbc.co.uk",
+			"seed":"http://www.bbc.co.uk/sports",
+			"category":"sports",
+			"patterns":[
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"regexp",
+					"content":"/\\.bbc.co.uk$/"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"xpath",
+					"content":"/bookstore/book[1]"
+				}
+			],
+			"desc":"some description here ..."
+		},
+		{
+			"id":" cb95e4de1acc8f97",
+			"country":"US",
+			"domain":"bbc.co.uk",
+			"seed":"http://www.bbc.co.uk/sports",
+			"category":"sports",
+			"patterns":[
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"regexp",
+					"content":"/\\.bbc.co.uk$/"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"xpath",
+					"content":"/bookstore/book[1]"
+				}
+			],
+			"desc":"some description here ..."
+		},
+		{
+			"id":" cb95e4de1acc8f97",
+			"country":"US",
+			"domain":"bbc.co.uk",
+			"seed":"http://www.bbc.co.uk/sports",
+			"category":"sports",
+			"patterns":[
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"regexp",
+					"content":"/\\.bbc.co.uk$/"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"xpath",
+					"content":"/bookstore/book[1]"
+				}
+			],
+			"desc":"some description here ..."
+		},
+		{
+			"id":" cb95e4de1acc8f97",
+			"country":"US",
+			"domain":"bbc.co.uk",
+			"seed":"http://www.bbc.co.uk/sports",
+			"category":"sports",
+			"patterns":[
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"regexp",
+					"content":"/\\.bbc.co.uk$/"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"xpath",
+					"content":"/bookstore/book[1]"
+				}
+			],
+			"desc":"some description here ..."
+		},
+		{
+			"id":" cb95e4de1acc8f97",
+			"country":"US",
+			"domain":"bbc.co.uk",
+			"seed":"http://www.bbc.co.uk/sports",
+			"category":"sports",
+			"patterns":[
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"regexp",
+					"content":"/\\.bbc.co.uk$/"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"xpath",
+					"content":"/bookstore/book[1]"
+				}
+			],
+			"desc":"some description here ..."
+		},
+		{
+			"id":" cb95e4de1acc8f97",
+			"country":"US",
+			"domain":"bbc.co.uk",
+			"seed":"http://www.bbc.co.uk/sports",
+			"category":"sports",
+			"patterns":[
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"regexp",
+					"content":"/\\.bbc.co.uk$/"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"xpath",
+					"content":"/bookstore/book[1]"
+				}
+			],
+			"desc":"some description here ..."
+		},
+		{
+			"id":" cb95e4de1acc8f97",
+			"country":"US",
+			"domain":"bbc.co.uk",
+			"seed":"http://www.bbc.co.uk/sports",
+			"category":"sports",
+			"patterns":[
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"regexp",
+					"content":"/\\.bbc.co.uk$/"
+				},
+				{
+					"id":"cb95e4de1acc8f97",
+					"type":"xpath",
+					"content":"/bookstore/book[1]"
+				}
+			],
+			"desc":"some description here ..."
+		}	
+	],
+	"current_page":1,
+	"total_num":108
+}
