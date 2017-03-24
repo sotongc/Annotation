@@ -1,0 +1,72 @@
+var webpack=require('webpack');
+var path=require("path");
+
+module.exports={
+	entry:{
+		home:'./src/js/home.js',
+		seed:'./src/js/seed.js',
+		xpath:'./src/js/xpath.js',
+		login:'./src/js/login.js',
+		accounts:'./src/js/accounts.js',
+		crawlstat:'./src/js/crawlstat.js',
+		seednews:'./src/js/seednews.js',
+		countrystat:'./src/js/countrystat.js',
+		seedstat:'./src/js/seedstat.js',
+		domainstat:'./src/js/domainstat.js'
+	},
+	output:{
+		path:path.resolve(__dirname,'dist'),
+		publicPath:'/dist/',
+		filename:'js/[name].js'
+	},
+	module:{
+		rules:[
+			{
+				test:/\.vue$/,
+				loader:'vue-loader',
+				exclude:/node_modules/
+			},
+			{
+				test:/\.css$/,
+				loader:'style-loader!css-loader'
+			},
+			{
+				test:/\.js$/,
+				loader:'babel-loader',
+				exclude:/node_modules/,
+				query:{
+					presets:['es2015']
+				}
+			},
+			{
+				test:/\.(png|jpg|gif|svg)$/,
+				loader:'file-loader',
+				options:{
+					name:'[name].[ext]?[hash]'
+				}
+			},
+			{
+		        test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+		        loader: 'file-loader'
+		    },
+			{
+				test:/\.json$/,
+				loader:'json-loader'
+			}
+		]
+	},
+	resolve:{
+		alias:{
+			'vue$':'vue/dist/vue.common.js'
+		}
+	},
+	devServer:{
+		contentBase:path.resolve(__dirname,'../'),
+		port:8080,
+		compress:true,
+		inline:true
+	},
+	plugins:[
+		new webpack.HotModuleReplacementPlugin()
+	]
+};
