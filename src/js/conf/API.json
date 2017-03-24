@@ -2,6 +2,14 @@
 	"getSeedInfo":"../../data/ListOfSeed.json",
 	"getHTML":"http://107.167.123.93:8080/news-parse-api/news/html",
 	"extractEle":"http://107.167.123.93:8080/news-parse-api/news/parse",
-	"save":"http://107.167.123.93:8080/news-parse-api/seed/save1",
-	"search":"http://107.167.123.93:8080/news-parse-api/seed/search"
+	"save":"http://107.167.123.93:8080/news-parse-api/seed/save",
+	"search":"http://107.167.123.93:8080/news-parse-api/seed/search",
+	"crawlstat":"http://107.167.123.93:8080/news-parse-api/seed/crawlstat",
+	"seednews":"http://107.167.123.93:8080/news-parse-api/seed/seednews",
+	"login":"http://107.167.123.93:8080/news-parse-api/user/login",
+	"usersave":"http://107.167.123.93:8080/news-parse-api/user/save",
+	"usersearch":"http://107.167.123.93:8080/news-parse-api/user/search",
+	"country":"http://107.167.123.93:8080/news-parse-api/dailysta/country",
+	"staseed":"http://107.167.123.93:8080/news-parse-api/dailysta/seed",
+	"domain":"http://107.167.123.93:8080/news-parse-api/dailysta/domain"
 }

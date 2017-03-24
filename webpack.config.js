@@ -7,7 +7,12 @@ module.exports={
 		seed:'./src/js/seed.js',
 		xpath:'./src/js/xpath.js',
 		login:'./src/js/login.js',
-		accounts:'./src/js/accounts.js'
+		accounts:'./src/js/accounts.js',
+		crawlstat:'./src/js/crawlstat.js',
+		seednews:'./src/js/seednews.js',
+		countrystat:'./src/js/countrystat.js',
+		seedstat:'./src/js/seedstat.js',
+		domainstat:'./src/js/domainstat.js'
 	},
 	output:{
 		path:path.resolve(__dirname,'dist'),
@@ -40,6 +45,10 @@ module.exports={
 					name:'[name].[ext]?[hash]'
 				}
 			},
+			{
+		        test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+		        loader: 'file-loader'
+		    },
 			{
 				test:/\.json$/,
 				loader:'json-loader'

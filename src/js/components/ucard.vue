@@ -6,14 +6,14 @@
 		<section>
 			<p class="i-label">
 				<label>username:&nbsp;</label>
-				<span>xxxxx</span>
+				<span>{{userInfo?userInfo.username:'xxxxx'}}</span>
 				<button class="delete">Delete</button>
 				<button class="done">Done</button>
 			</p>
 			<label class="b-label">authority:</label>
 			<div class="authority-options">
-				<button class="on">a1</button>
-				<button>a2</button>
+				<button :class="{on: userInfo.authority == 1}">a1</button>
+				<button :class="{on: userInfo.authority == 2}">a2</button>
 			</div>
 		</section>
 	</div>

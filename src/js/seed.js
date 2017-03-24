@@ -4,6 +4,10 @@ import api from './conf/API.json';
 
 import Vue from 'vue';
 import 'whatwg-fetch';
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-default/index.css';
+import locale from 'element-ui/lib/locale/lang/en';
+Vue.use(ElementUI,{locale});
 
 /**
  * @ import modules
@@ -13,11 +17,13 @@ import header from './components/header.vue';
 import pagination from './components/pagination.vue';
 import pannel from './components/pannel.vue';
 import table from './components/table.vue';
+import loading from './components/loading.vue';
 
 const $nav=Vue.extend(header);
 const $page=Vue.extend(pagination);
 const $pannel=Vue.extend(pannel);
 const $table=Vue.extend(table);
+const $loading=Vue.extend(loading);
 
 /*global event bus*/
 const $ebus=new Vue();
@@ -31,7 +37,7 @@ let query={
 	//category:'political',
 	//domain:'',
 	pageNo:1,
-	limit:10
+	limit:20
 };
 
 let toFormData=function(json){
@@ -40,11 +46,11 @@ let toFormData=function(json){
 	}).join("&");
 };
 
-let seedRequest=function(uri,formData){
+let seedRequest=function(uri,formData,contentType){
 	return new Request(uri,{
 		method:'POST',
 		headers:{
-			'Content-Type':'application/x-www-form-urlencoded'
+			'Content-Type':contentType||'application/x-www-form-urlencoded'
 		},
 		mode:'cors',
 		body:formData
@@ -62,9 +68,9 @@ let __nav=new $nav({
 let __page=new $page({
 	el:'#pagination',
 	data:{
-		totalNum:1, //totoal item number
+		totalNum:0, //totoal item number
 		limit:5,
-		pageItems:10,//item per page
+		pageItems:20,//item per page
 		currentPage:1// page number
 	}
 });
@@ -85,28 +91,43 @@ let __seedlist=new $table({
 		enable:true,
 		active:true,
 		headings:[
+			{key:'number',text:'Number'},
 			{key:'country',text:'Country'},
 			{key:'domain',text:'Domain'},
 			{key:'seed',text:'Seed',color:'#0099e5'},
+			{key:'createUser',text:'CreateUser'},
+			{key:'lastCrawlTimestamp',text:'LastCrawl'},
+			{key:'lastParseTimestamp',text:'LastParse'},
+			{key:'status',text:'Status'},
+			{key:'version',text:'Version'},
 			{key:'category',text:'Category'}
 		],
-		list:[]
+		list:[],
+		pageNo:query.pageNo,
+		pageSize:query.limit
 	}
 });
 
-let __patternlist=new $table({
-	el:"#patternList",
+let __loading = new $loading({
+	el:'#loading',
 	data:{
-		title:'PATTERN LIST',
-		enable:false,
-		active:false,
-		headings:[
-			{key:'type',text:'Type'},
-			{key:'content',text:'Content',color:'#c7254e'}
-		],
-		list:[]
+		show:false
 	}
-});
+})
+
+//let __patternlist=new $table({
+//	el:"#patternList",
+//	data:{
+//		title:'PATTERN LIST',
+//		enable:false,
+//		active:false,
+//		headings:[
+//			{key:'type',text:'Type'},
+//			{key:'content',text:'Content',color:'#c7254e'}
+//		],
+//		list:[]
+//	}
+//});
 
 /**
  * @ components interactions
@@ -121,7 +142,7 @@ __pannel.$on('pannel:onsearch',function(){
 __seedlist.$on("table:selected",function(index){
 	dataLoaded.then(function(data){
 		data=data.result;
-		__patternlist.list=data.data[index].patterns;
+//		__patternlist.list=data.data[index].patterns;
 	});
 });
 
@@ -137,30 +158,52 @@ let dataLoaded;
 
 let responseUnit={
 	init:function(){
+		__loading.show=true;
 		query.pageNo=__page.currentPage;
-		dataLoaded=fetch(seedRequest(api.search,toFormData(query))).then(function(res){
+		dataLoaded=fetch(seedRequest(api.search,JSON.stringify({
+			"seed": query.seed,
+			"country": query.country,
+			"category": query.category,
+			"domain": query.domain,
+			"pageNo": 1,
+			"limit": query.limit
+		}),"application/json")).then(function(res){
 			return res.json();
 		});
 		dataLoaded.then(function(data){
+			__loading.show=false;
 			data=data.result;
 			__page.$data.totalNum=data.totalItemCount;
 			__page.$data.currentPage=data.pageNo;
 			__seedlist.$data.list=data.data;
-			__patternlist.$data.list=data.data[0].patterns;
+//			__patternlist.$data.list=data.data[0].patterns;
 		}).catch(function(error){
+			__loading.show=false;
 			console.error(`Failed: ${error}!`);
 		});
 	},
 	pagechange:function(){
+		__loading.show=true;
 		query.pageNo=__page.currentPage;
-		dataLoaded=fetch(seedRequest(api.search,toFormData(query))).then(function(res){
+		dataLoaded=fetch(seedRequest(api.search,JSON.stringify({
+			"seed": query.seed,
+			"country": query.country,
+			"category": query.category,
+			"domain": query.domain,
+			"pageNo": query.pageNo,
+			"limit": query.limit
+		}),"application/json")).then(function(res){
 			return res.json();
 		});
 		dataLoaded.then(function(data){
+			__loading.show=false;
 			data=data.result;
 			__seedlist.$data.list=data.data;
-			__patternlist.$data.list=data.data[0].patterns;
+			__seedlist.$data.pageNo=data.pageNo;
+			__seedlist.$data.pageSize=data.pageSize;
+//			__patternlist.$data.list=data.data[0].patterns;
 		}).catch(function(error){
+			__loading.show=false;
 			console.error(`Failed: ${error}!`);
 		});
 	}

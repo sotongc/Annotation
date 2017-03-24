@@ -20,6 +20,7 @@
 </template>
 <script>
 	import 'whatwg-fetch';
+	import api from '../conf/API.json'; 
 	export default{
 		props:{
 			username:{
@@ -43,7 +44,29 @@
 		methods:{
 			login:function(){
 				if(this.validator){
-
+					const that = this;
+					fetch(api.login,{
+						method:'POST',
+						headers:{
+							'Content-Type':'application/json'
+						},
+						mode:'cors',
+						body:JSON.stringify({
+							'username': this.username,
+							'password': this.password
+						})
+					}).then(function(res){
+						return res.json();
+					}).then(function(data){
+						if(data.success){
+							localStorage.setItem('userInfo',JSON.stringify(data.data));
+							window.location.assign('./home.html');
+						}else{
+							that.errmessage=data.message;
+						}
+					}).catch(function(error){
+						console.error(`Failed: ${error}!`);
+					});
 				} else{
 					this.errmessage="Error: Username and Password cannot leave empty!";
 				}

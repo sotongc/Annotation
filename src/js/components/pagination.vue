@@ -7,6 +7,7 @@
 		<i :class="['btn-icon', {disable:!status[1]}]" @click="last">&gt;&gt;</i>
 		<input type="text" class="btn-icon" v-model="pagenum"/>
 		<input type="button" value="Go" class="btn-icon goto" @click="goto"/>
+		<span class="total">TotalCount:&nbsp;&nbsp;<i>{{totalNum}}</i></span>
 	</section>
 </template>
 <script>
@@ -63,14 +64,17 @@
 			},
 			first:function(){
 				this.status[0] && (this.currentPage=1);
+				this.$emit("page:onchange",this.currentPage);
 			},
 			last:function(){
 				this.status[1] && (this.currentPage=this.totalPages);
+				this.$emit("page:onchange",this.currentPage);
 			},
 			goto:function(){
 				let pagenum=Number(this.pagenum);
 				if(!Object.is(pagenum,NaN)){
 					this.currentPage=pagenum<1?1:pagenum>this.totalPages?this.totalPages:pagenum;
+					this.$emit("page:onchange",this.currentPage);
 				}
 			}
 		}
@@ -83,4 +87,6 @@
 	.pagination .disable{color:#C8C8C8;cursor:default;}
 	.pagination input{cursor:inherit;}
 	.pagination .goto{cursor:pointer;font-size:inherit;padding:0px;font-size:12px;}
+	.pagination .total{margin-left:50px;color:#888;font-weight:bold;}
+	.pagination .total i{font-style:normal;color:#444;font-size:18px;}
 </style>

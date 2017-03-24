@@ -32,6 +32,8 @@
     "whatwg-fetch": "^2.0.2"
   },
   "dependencies": {
+    "babel-preset-es2015": "^6.24.0",
+    "element-ui": "^1.2.5",
     "vue": "^2.1.10"
   }
 }

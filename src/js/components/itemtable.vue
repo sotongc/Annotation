@@ -4,32 +4,27 @@
 		<!--item heading-->
 		<tr>
 			<th v-for="heading in headings">{{heading.text}}</th>
-			<th class="btnTh">op</th>
 		</tr>
 
 		<!--item list-->
 		<tbody v-if="list.length">
 			<tr v-for="(item,i) in list" :class="{enable:enable,selected:Object.is(i,activeIndex)}" @click="select" :data-index="i">
 				<td v-for="th in headings" :style="{color:th.color}">
-					<template v-if="th.key=='number'">
+					<template v-if="th.key == 'number'">
 						{{i+1+(pageNo-1)*pageSize}}
 					</template>
-					<template v-else-if="th.key=='lastCrawlTimestamp'|| th.key == 'lastParseTimestamp'">
-						{{getTime(item[th.key])}}
+					<template v-else-if="th.key == 'url'">
+						<a :href="item['url']" target="_blank">{{item[th.key]}}</a>
 					</template>
 					<template v-else>
-						{{item[th.key]}}
+						{{(th.key == 'parseTimestamp' || th.key == 'crawlTimestamp' || th.key == 'processTimestamp' || th.key == 'modifyTime' || th.key == 'createTime') ? getTime(item[th.key]):item[th.key]}}
 					</template>
-				</td>
-				<td>
-					<span class="btn" @click="toCrawlstat(item['seed'])">crawlstat</span>
-					<span class="btn" @click="toSeedNews(item['seed'])">seednews</span>
 				</td>
 			</tr>
 		</tbody>
 		<tbody v-else>
 			<tr class="gray">
-				<td :colspan="headings.length+1">No Data Currently...</td>
+				<td :colspan="headings.length">No Data Currently...</td>
 			</tr>
 		</tbody>
 	</table>
@@ -44,7 +39,6 @@
 		methods:{
 			select:function(e){
 				this.active=+e.target.parentNode.dataset.index;
-				this.$emit("table:selected",+e.target.parentNode.dataset.index);
 			},
 			getTime:function( timestamp ) {
 				let t = new Date(timestamp);
@@ -59,27 +53,19 @@
 				    n = n.toString();
 				    return n[1] ? n : '0' + n;
 				}
-			},
-			toCrawlstat:function(domain){
-				window.location.assign('./crawlstat.html?seed='+domain);
-			},
-			toSeedNews: function(domain){
-				window.location.assign('./seednews.html?seed='+domain);
 			}
 		}
 	}
 </script>
 <style>
-	.table{width:100%;border-collapse:collapse;text-align:center;font-size:12px;margin-bottom:30px;box-sizing:border-box;}
+	.table{width:100%;border-collapse:collapse;text-align:center;font-size:12px;margin-bottom:30px;}
 	.table tr{line-height:30px;border-bottom:1px solid #ccc;}
-	.table td{border:1px solid #ccc;border-top:none;border-bottom:none;white-space:nowrap;}
+	.table td{border:1px solid #ccc;border-top:none;border-bottom:none;white-space:nowrap;max-width:1000px;overflow:hidden;text-overflow:ellipsis;}
 	.table th{color:#fff;background-color:#0099e5;}
-	.table th:first-child{width:65px;}
+	.table th:first-child{width:70px;}
 	.gray{color:#ababab;}
 	.table caption{text-align:left;margin:10px 0px;font-size:14px;font-weight:500;}
 	.table .enable{cursor:pointer;}
 	.table .enable:hover{background-color:#f5da55;}
 	.table .selected{background-color:#f5da55;}
-	.table .btnTh{width:170px;}
-	.table .btn{display:inline-block;padding:0 5px;background:#738195;color:#fff;border-radius:3px;line-height:24px;margin:0 3px;}
 </style>

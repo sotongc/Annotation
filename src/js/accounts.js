@@ -18,13 +18,18 @@ const $page=Vue.extend(page);
 const $table=Vue.extend(table);
 const $tabs=Vue.extend(tabs);
 
+
+const userInfo=JSON.parse(localStorage.getItem('userInfo'));
 /* vue instance */
 let __header=new $header({
 	el:'#nav'
 });
 
 let __ucard=new $ucard({
-	el:'#ucard'
+	el:'#ucard',
+	data:{
+		userInfo:userInfo
+	}
 });
 
 let __upage=new $page({
