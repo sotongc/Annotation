@@ -74,17 +74,16 @@
 <style>
 	.navtab{
 		padding:10px;
-		margin:10px 0 10px 40px;
+		margin:15px 0 5px 40px;
 	}
 	.navtab .navigator{
 		float:left;
-		line-height:40px;
+		line-height:32px;
 		margin-right:40px;
 		height:36px;
-		font-size:16px;
 	}
 	.navtab .navigator .tag{
-		font-size:16px;
+		font-size:15px;
 		height:28px;
 		line-height:25px;
 	}
@@ -92,20 +91,23 @@
 		float:left;
 	}
 	.navtab .seedinp{
-		width:150px;
+		width:140px;
 		margin-right:20px;
 	}
 	.navtab .select{
-		width:130px;
-		margin-right:15px;
+		width:112px;
+		height:20px;
+		margin-right:10px;
+	}
+	.navtab .el-input__inner{
+		height:28px;
 	}
 	.navtab label{
 		vertical-align: middle;
-		font-size:16px;
 	}
 	.navtab .querydate{
 		width:150px;
-		margin:0 25px 0 5px;
+		margin-right:10px;
 		border-radius:5px;
 	}
 	.navtab .query{
@@ -114,6 +116,6 @@
 		background:#475669;
 		border-radius:5px;
 		border:none;
-		padding:8px 10px;
+		padding:6px;
 	}
 </style>

@@ -70,8 +70,8 @@
 	}
 </script>
 <style>
-	.table{width:100%;border-collapse:collapse;text-align:center;font-size:12px;margin-bottom:30px;box-sizing:border-box;}
-	.table tr{line-height:30px;border-bottom:1px solid #ccc;}
+	.table{width:100%;border-collapse:collapse;text-align:center;font-size:12px;margin-bottom:20px;box-sizing:border-box;}
+	.table tr{line-height:24px;border-bottom:1px solid #ccc;}
 	.table td{border:1px solid #ccc;border-top:none;border-bottom:none;white-space:nowrap;}
 	.table th{color:#fff;background-color:#0099e5;}
 	.table th:first-child{width:65px;}

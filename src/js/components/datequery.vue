@@ -65,7 +65,7 @@
 <style>
 	.queryBox{
 		padding:10px;
-		margin:20px 40px;
+		margin:15px 40px 5px;
 	}
 	.queryBox span{
 		display:inline-block;
@@ -85,9 +85,12 @@
 	.queryBox label{
 		vertical-align: middle;
 	}
+	.queryBox .el-input__inner{
+		height:30px;
+	}
 	.queryBox .querydate{
 		width:400px;
-		margin:0 25px 0 5px;
+		margin:0 15px 0 5px;
 		border-radius:5px;
 	}
 	.queryBox .query{
@@ -96,6 +99,6 @@
 		background:#475669;
 		border-radius:5px;
 		border:none;
-		line-height:26px;
+		padding:6px 8px;
 	}
 </style>

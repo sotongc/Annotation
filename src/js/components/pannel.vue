@@ -39,7 +39,7 @@
 	}
 </script>
 <style>
-	.pannel{padding:13px;margin:20px 40px;}
+	.pannel{padding:10px;margin:15px 40px 5px;}
 	.pannel .statistics{margin-right:50px;}
 	.pannel .statistics .btn{background:#475669;color:#fff;}
 	.pannel label{vertical-align:middle;}
