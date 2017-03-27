@@ -22,7 +22,8 @@ const $loading = Vue.extend(loading);
 const $datequery = Vue.extend(datetab);
 
 let query={
-	date:''
+	date:'',
+	country:''
 }
 
 let crawlRequest = function(uri,formData,contentType){
@@ -45,7 +46,23 @@ let __querydate = new $datequery({
 	el:'#querydate',
 	data:{
 		query:query,
-		tabname:'Country Statistics'
+		tabname:'Country Statistics',
+		options:[{
+			value:'ke',
+			label:'ke'
+		},{
+			value:'ng',
+			label:'ng'
+		},{
+			value:'za',
+			label:'za'
+		},{
+			value:'tz',
+			label:'tz'
+		},{
+			value:'gh',
+			label:'gh'
+		}]
 	}
 })
 
@@ -105,7 +122,8 @@ let responseResult={
 		dataSource = fetch(crawlRequest(api.country,JSON.stringify({
 			'pageNo':page,
 			'limit':__pagination.pageItems,
-			'date':responseResult.getTime(query.date)
+			'date':responseResult.getTime(query.date),
+			'country':query.country
 		}),'application/json')).then(function(res){
 			return res.json();
 		});

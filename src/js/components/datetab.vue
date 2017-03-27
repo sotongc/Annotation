@@ -14,19 +14,23 @@
 		      	placeholder="select date"
 		      	:picker-options="pickerOptions">
 		    </el-date-picker>
+		    <label>Country:</label>
+		  	<el-select class="select" v-model="query.country" placeholder="">
+			    <el-option
+			      	v-for="item in options"
+			      	:label="item.label"
+			      	:value="item.value">
+			    </el-option>
+		  	</el-select>
 		    <template v-if="tabname == 'Seed Statistics'">
 		    		<label>Seed:</label>
 		    		<el-input class="seedinp" v-model="query.seed" placeholder="input seed here..."></el-input>
 		    </template>
+		    <template v-if="tabname == 'Domain Statistics'">
+		    		<label>Domain:</label>
+		    		<el-input class="seedinp" v-model="query.domain" placeholder="input domain here..."></el-input>
+		    </template>
 		    <template v-if="tabname == 'Seed Statistics' || tabname == 'Domain Statistics'">
-		    		<label>Country:</label>
-			  	<el-select class="select" v-model="query.country" placeholder="">
-				    <el-option
-				      	v-for="item in options"
-				      	:label="item.label"
-				      	:value="item.value">
-				    </el-option>
-			  	</el-select>
 			  	<label>OrderBy:</label>
 			  	<el-select class="select" v-model="query.orderBy" placeholder="">
 				    <el-option
@@ -70,7 +74,7 @@
 <style>
 	.navtab{
 		padding:10px;
-		margin:10px 40px;
+		margin:10px 0 10px 40px;
 	}
 	.navtab .navigator{
 		float:left;

@@ -78,7 +78,7 @@ let __page=new $page({
 let __pannel=new $pannel({
 	el:'#pannel',
 	data:{
-		countries:['us','in','ind'],
+		countries:['ke','ng','za','ta','gh'],
 		category:['political','sports','entertainment','game'],
 		query:query
 	}

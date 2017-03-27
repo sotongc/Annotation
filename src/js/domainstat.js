@@ -25,7 +25,8 @@ let query={
 	date:'',
 	country:'',
 	orderBy:'',
-	order:''
+	order:'',
+	domain:''
 }
 
 let crawlRequest = function(uri,formData,contentType){
@@ -149,7 +150,8 @@ let responseResult={
 			'date':responseResult.getTime(query.date),
 			'country':query.country,
 			'orderBy':query.orderBy,
-			'order':query.order
+			'order':query.order,
+			'domain':query.domain
 		}),'application/json')).then(function(res){
 			return res.json();
 		});
