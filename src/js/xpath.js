@@ -31,6 +31,45 @@ const $info=Vue.extend(info);
 const $xpad=Vue.extend(xpad);
 const $loading=Vue.extend(loading);
 
+
+let getCookie = function(name){
+	if(document.cookie.length>1){
+		var arr1 = document.cookie.split('; ');
+	    for (var i=0; i<arr1.length; i++) {
+	        var arr2 = arr1[i].split('=');
+	        if ( arr2[0] == name ) {
+	            return decodeURI(arr2[1]);
+	        }
+	    }
+	}
+};
+
+const username = getCookie('username')||'';
+const session = getCookie('session')||'';
+(function(){
+	fetch(api.checklogin,{
+		method:'POST',
+		header:{
+			'Content-Type':'application/json'
+		},
+		mode:'cors',
+		body:JSON.stringify({
+			'username':username,
+			'session':session
+		})
+	}).then(function(res){
+		return res.json();
+	}).then(function(result){
+		if(result.success){
+			console.log(result.success);
+		}else{
+			window.location.assign('./login.html');
+		}
+	}).catch(function(err){
+		console.error(`Failed: ${error}!`);
+	});
+}());
+
 /**
  * @ Object used to get the params of client window
  */

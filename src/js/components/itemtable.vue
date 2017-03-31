@@ -17,7 +17,7 @@
 						<a :href="item['url']" target="_blank">{{item[th.key]}}</a>
 					</template>
 					<template v-else>
-						{{(th.key == 'parseTimestamp' || th.key == 'crawlTimestamp' || th.key == 'processTimestamp' || th.key == 'modifyTime' || th.key == 'createTime') ? getTime(item[th.key]):item[th.key]}}
+						{{(th.key == 'parseTimestamp' || th.key == 'crawlTimestamp' || th.key == 'processTimestamp' || th.key == 'modifyTime' || th.key == 'createTime'|| th.key=='lastModifyTimestamp') ? getTime(item[th.key]):item[th.key]}}
 					</template>
 				</td>
 			</tr>

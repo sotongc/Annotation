@@ -11,5 +11,6 @@
 	"usersearch":"http://107.167.123.93:8080/news-parse-api/user/search",
 	"country":"http://107.167.123.93:8080/news-parse-api/dailysta/country",
 	"staseed":"http://107.167.123.93:8080/news-parse-api/dailysta/seed",
-	"domain":"http://107.167.123.93:8080/news-parse-api/dailysta/domain"
+	"domain":"http://107.167.123.93:8080/news-parse-api/dailysta/domain",
+	"checklogin":"http://107.167.123.93:8080/news-parse-api/user/checkLogin"
 }

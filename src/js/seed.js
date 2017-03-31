@@ -57,6 +57,22 @@ let seedRequest=function(uri,formData,contentType){
 	});
 };
 
+let getCookie = function(name){
+	if(document.cookie.length>1){
+		var arr1 = document.cookie.split('; ');
+	    for (var i=0; i<arr1.length; i++) {
+	        var arr2 = arr1[i].split('=');
+	        if ( arr2[0] == name ) {
+	            return decodeURI(arr2[1]);
+	        }
+	    }
+	}
+};
+
+//getcookie进行判定
+const username = getCookie('username')||'';
+const session = getCookie('session');
+
 /**
  * @ Create Components
 */
@@ -157,6 +173,22 @@ __page.$on('page:onchange',function(pagenum){
 let dataLoaded;
 
 let responseUnit={
+	checklogin:function(){
+		fetch(seedRequest(api.checklogin,JSON.stringify({
+			'username':username,
+			'session':session
+		}),'application/json')).then(function(res){
+			return res.json();
+		}).then(function(result){
+			if(result.success){
+				responseUnit.init();
+			}else{
+				window.location.assign('./login.html');
+			}
+		}).catch(function(err){
+			console.error(`Failed: ${error}!`);
+		});
+	},
 	init:function(){
 		__loading.show=true;
 		query.pageNo=__page.currentPage;
@@ -209,4 +241,4 @@ let responseUnit={
 	}
 };
 
-responseUnit.init();
+responseUnit.checklogin();

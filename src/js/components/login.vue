@@ -42,6 +42,8 @@
 			}
 		},
 		methods:{
+			    //设置名称为name,值为value的Cookie
+			   //即document.cookie= name+"="+value+";path=/";   时间可以不要，但路径(path)必须要填写，因为JS的默认路径是当前页，如果不填，此cookie只在当前页面生效！~
 			login:function(){
 				if(this.validator){
 					const that = this;
@@ -59,8 +61,13 @@
 						return res.json();
 					}).then(function(data){
 						if(data.success){
-							localStorage.setItem('userInfo',JSON.stringify(data.data));
+							var oDate = new Date();
+    							oDate.setDate( oDate.getDate() + 7 );
+						    document.cookie = "username="+data.data.username+";expires="+oDate.toGMTString()+";path=/";
+						    document.cookie = "authority="+data.data.authority+";expires="+oDate.toGMTString()+";path=/";
+						    document.cookie = "session="+data.data.session+";expires="+oDate.toGMTString()+";path=/";
 							window.location.assign('./home.html');
+//							localStorage.setItem('userInfo',JSON.stringify(data.data));
 						}else{
 							that.errmessage=data.message;
 						}
