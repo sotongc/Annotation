@@ -22,7 +22,7 @@ const $loading = Vue.extend(loading);
 const $datetab = Vue.extend(datetab);
 
 let query={
-	date:'',
+	daterange:'',
 	seed:'',
 	country:'',
 	orderBy:'',
@@ -106,7 +106,7 @@ let __pagination = new $page({
 let __seedtable = new $itemtable({
 	el:'#seedtab',
 	data:{
-		title:'Country List',
+		title:'SEED STATISTICS LIST',
 		enable: true,
 		active: true,
 		headings:[
@@ -152,7 +152,8 @@ let responseResult={
 		dataSource = fetch(crawlRequest(api.staseed,JSON.stringify({
 			'pageNo':page,
 			'limit':__pagination.pageItems,
-			'date':responseResult.getTime(query.date),
+			'fromDate':responseResult.getTime(query.daterange[0]),
+			'toDate':responseResult.getTime(query.daterange[1]),
 			'seed':query.seed,
 			'country':query.country,
 			'orderBy':query.orderBy,

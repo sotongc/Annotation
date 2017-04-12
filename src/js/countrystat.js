@@ -22,7 +22,7 @@ const $loading = Vue.extend(loading);
 const $datequery = Vue.extend(datetab);
 
 let query={
-	date:'',
+	daterange:'',
 	country:''
 }
 
@@ -79,7 +79,7 @@ let __pagination = new $page({
 let __countrytable = new $itemtable({
 	el:'#countrytab',
 	data:{
-		title:'Country List',
+		title:'COUNTRY STATISTICS LIST',
 		enable: true,
 		active: true,
 		headings:[
@@ -122,7 +122,8 @@ let responseResult={
 		dataSource = fetch(crawlRequest(api.country,JSON.stringify({
 			'pageNo':page,
 			'limit':__pagination.pageItems,
-			'date':responseResult.getTime(query.date),
+			'fromDate':responseResult.getTime(query.daterange[0]),
+			'toDate':responseResult.getTime(query.daterange[1]),
 			'country':query.country
 		}),'application/json')).then(function(res){
 			return res.json();

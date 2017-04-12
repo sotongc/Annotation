@@ -22,7 +22,7 @@ const $itemtable = Vue.extend(itemtable);
 const $loading = Vue.extend(loading);
 
 let query={
-	date:'',
+	daterange:'',
 	country:'',
 	orderBy:'',
 	order:'',
@@ -102,7 +102,7 @@ let __datetab = new $datetab({
 let __domaintable = new $itemtable({
 	el:'#domaintab',
 	data:{
-		title:'Country List',
+		title:'DOMAIN STATISTICS LIST',
 		enable: true,
 		active: true,
 		headings:[
@@ -147,7 +147,8 @@ let responseResult={
 		dataSource = fetch(crawlRequest(api.domain,JSON.stringify({
 			'pageNo':page,
 			'limit':__pagination.pageItems,
-			'date':responseResult.getTime(query.date),
+			'fromDate':responseResult.getTime(query.daterange[0]),
+			'toDate':responseResult.getTime(query.daterange[1]),
 			'country':query.country,
 			'orderBy':query.orderBy,
 			'order':query.order,

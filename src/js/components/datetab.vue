@@ -2,17 +2,18 @@
 	<div class="navtab">
 		<el-breadcrumb separator="/" class="navigator">
 			<el-breadcrumb-item><a href="./home.html"><el-tag class="tag" type="success">Home</el-tag></a></el-breadcrumb-item>
-	 	 	<el-breadcrumb-item><a href="./seed.html"><el-tag class="tag" type="primary">Seed</el-tag></a></el-breadcrumb-item>
-	 	 	<el-breadcrumb-item>{{tabname}}</el-breadcrumb-item>
+	 	 	<el-breadcrumb-item><a href="./seed.html"><el-tag class="tag" type="primary">Statistics</el-tag></a></el-breadcrumb-item>
+	 	 	<el-breadcrumb-item><el-tag type="gray" class="tag">{{tabname}}</el-tag></el-breadcrumb-item>
 		</el-breadcrumb>
 		<div class="querybox">
-			<label>Date:</label>
+			<label>DateRange:</label>
 			<el-date-picker
 				class="querydate"
-		      	v-model="query.date"
-		      	type="date"
-		      	placeholder="select date"
-		      	:picker-options="pickerOptions">
+				range-separator=' —— '
+		      	v-model="query.daterange"
+		      	type="daterange"
+		      	placeholder="select daterange"
+	      	>
 		    </el-date-picker>
 		    <label>Country:</label>
 		  	<el-select class="select" v-model="query.country" placeholder="">
@@ -55,15 +56,6 @@
 </template>
 <script>
 	export default{
-		data() {
-			return {
-				pickerOptions: {
-					disabledDate(time) {
-						return time.getTime() > Date.now();
-					}
-				}
-			}
-		},
 		methods:{
 			search:function(){
 				this.$emit("date:query");
@@ -73,13 +65,11 @@
 </script>
 <style>
 	.navtab{
-		padding:10px;
-		margin:15px 0 5px 40px;
+		padding:15px 10px;
+		margin:0 40px;
 	}
 	.navtab .navigator{
-		float:left;
 		line-height:32px;
-		margin-right:40px;
 		height:36px;
 	}
 	.navtab .navigator .tag{
@@ -88,7 +78,7 @@
 		line-height:25px;
 	}
 	.navtab .querybox{
-		float:left;
+		margin-top:15px;
 	}
 	.navtab .seedinp{
 		width:140px;
@@ -106,7 +96,7 @@
 		vertical-align: middle;
 	}
 	.navtab .querydate{
-		width:150px;
+		width:245px;
 		margin-right:10px;
 		border-radius:5px;
 	}
