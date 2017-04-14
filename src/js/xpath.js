@@ -32,6 +32,10 @@ const $xpad=Vue.extend(xpad);
 const $loading=Vue.extend(loading);
 
 
+let str = window.location.search;
+const seedURL=str.split('=')[1];
+
+
 let getCookie = function(name){
 	if(document.cookie.length>1){
 		var arr1 = document.cookie.split('; ');
@@ -241,26 +245,7 @@ __tool.$on("annotation:save",function(){
 });
 
 __tool.$on("frame:load",function(){
-	initialize();
-	__loading.show=true;
-
-	fetch(htmlRequest(api.getHTML,formQuery({
-		url:this.pageURL
-	}))).then(res=>res.json())
-		.then(function(data){
-			if(data.htmlText){
-				__frame.html=data.htmlText;
-				__frame.load();
-			}
-			else{
-				__frame.src="../view/404.html"
-			}
-			
-			__loading.show=false;
-		}).catch(function(err){
-			__loading.show=false;
-			alert(err);
-		});
+	getHtml(this.pageURL);
 });
 
 __tool.$on("annotation:display",function(){
@@ -341,4 +326,34 @@ function initialize(){
 	__info.isshow=false;
 	__info.listshow=false;
 	__tool.display='Show';
+}
+
+if(seedURL&&seedURL!=''){
+	__tool.pageURL=seedURL;
+	getHtml(__tool.pageURL);
+}
+
+
+function getHtml(url){
+	initialize();
+	__loading.show=true;
+
+	fetch(htmlRequest(api.getHTML,formQuery({
+		url:url
+	})))
+	.then(res=>res.json())
+	.then(function(data){
+		if(data.htmlText){
+			__frame.html=data.htmlText;
+			__frame.load();
+		}
+		else{
+			__frame.src="../view/404.html"
+		}
+		
+		__loading.show=false;
+	}).catch(function(err){
+		__loading.show=false;
+		alert(err);
+	});
 }

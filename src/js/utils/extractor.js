@@ -3,13 +3,12 @@ let extractor={};
 extractor.getDomInfo=function(eve){
 	let deepPath=eve.deepPath || eve.path || [];
 	let target=eve.target;
-
 	if(!deepPath){
 		deepPath=this.getParentNode(target);
 	}
-	deepPath=deepPath.filter((el)=>!/HTML/.test(el.tagName)&&el.tagName);
+	deepPath=deepPath.filter((el)=>!/document/.test(el.tagName)&&el.tagName);
 	deepPath=deepPath.map((el)=>el.tagName.toLowerCase());
-	return deepPath.reverse().join(" > ")
+	return deepPath.reverse().join("/");
 };
 
 extractor.getParentNode=function(target){

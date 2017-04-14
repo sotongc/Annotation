@@ -93,7 +93,6 @@ tagstore.jshash=function(plaintext){
 	for(let i=0;i<plaintext.length;i++){
 		hash ^= (hash<<5)+plaintext.charAt(i)+(hash>>2)
 	}
-
 	return (hash & 0x7FFFFFFF).toString(16);
 };
 

@@ -3,17 +3,15 @@ let xegine={};
 xegine.xpath=function(target){
 	let dpath=this.parent(target);
 	let $i=0;
-
 	dpath=dpath.map(function(el){
 		$i=xegine.index(el);
 		return el.tagName.toLowerCase()+($i?`[${$i+1}]`:'');
 	});
-
-	return dpath.reverse().join(">");
+	return dpath.reverse().join("/");
 };
 
 xegine.parent=function(target){
-	return /^body$/i.test(target.tagName)?[target]:[target].concat(this.parent(target.parentNode));
+	return /^html$/i.test(target.tagName)?[target]:[target].concat(this.parent(target.parentNode));
 };
 
 xegine.index=function(target){
