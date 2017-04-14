@@ -206,7 +206,7 @@ __frame.$on("element:out",function(bbox){
 __frame.$on("element:select",function(bbox,target){
 	__canvas.drawTag(bbox.left,bbox.top,bbox.width,bbox.height);
 	__canvas.clear(__canvas.ctx_d);
-
+	
 	tagstore.add(target);
 	__xpad.entries=tagstore.getEntries();
 });
