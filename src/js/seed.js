@@ -33,9 +33,9 @@ const $ebus=new Vue();
 */
 let query={
 	seed:'',
-	//country:'CN',
-	//category:'political',
-	//domain:'',
+	country:'all',
+	category:'unlimited',
+	domain:'',
 	pageNo:1,
 	limit:20
 };
@@ -94,8 +94,8 @@ let __page=new $page({
 let __pannel=new $pannel({
 	el:'#pannel',
 	data:{
-		countries:['ke','ng','za','ta','gh'],
-		category:['political','sports','entertainment','game'],
+		countries:['all','ke','ng','za','ta','gh'],
+		category:['unlimited','political','sports','entertainment','game'],
 		query:query
 	}
 });
@@ -194,8 +194,8 @@ let responseUnit={
 		query.pageNo=__page.currentPage;
 		dataLoaded=fetch(seedRequest(api.search,JSON.stringify({
 			"seed": query.seed,
-			"country": query.country,
-			"category": query.category,
+			"country": (query.country=='all'?'':query.country),
+			"category": (query.category=='unlimited'?'':query.category),
 			"domain": query.domain,
 			"pageNo": 1,
 			"limit": query.limit
@@ -219,8 +219,8 @@ let responseUnit={
 		query.pageNo=__page.currentPage;
 		dataLoaded=fetch(seedRequest(api.search,JSON.stringify({
 			"seed": query.seed,
-			"country": query.country,
-			"category": query.category,
+			"country": (query.country=='all'?'':query.country),
+			"category": (query.category=='unlimited'?'':query.category),
 			"domain": query.domain,
 			"pageNo": query.pageNo,
 			"limit": query.limit
