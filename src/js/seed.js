@@ -94,7 +94,7 @@ let __page=new $page({
 let __pannel=new $pannel({
 	el:'#pannel',
 	data:{
-		countries:['all','ke','ng','za','ta','gh'],
+		countries:['all','ke','ng','za','ta','gh','in','id'],
 		category:['unlimited','political','sports','entertainment','game'],
 		query:query
 	}

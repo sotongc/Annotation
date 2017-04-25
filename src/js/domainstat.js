@@ -75,6 +75,12 @@ let __datetab = new $datetab({
 		},{
 			value:'gh',
 			label:'gh'
+		},{
+			value:'in',
+			label:'in'
+		},{
+			value:'id',
+			label:'id'
 		}],
 		conditions:[{
 			value:'domain',

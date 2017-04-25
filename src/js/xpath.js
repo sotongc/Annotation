@@ -225,14 +225,52 @@ __tool.$on("annotation:active",function(){
 
 __tool.$on("annotation:save",function(){
 	__loading.show=true;
-
+	let patterns = tagstore.getSaveFormat();
+	let len = patterns.length;
+	const newArr=[patterns[0]];
+	var number=[];
+	var cont=[];
+	if(len>1){
+		for (var i=1;i<len;i++){
+			var repeat = false;
+			for(var j=0;j<newArr.length;j++){
+				if(patterns[i].content.length==newArr[j].content.length){
+					var l=newArr[j].content.length;
+					var temp='';
+					for(var k=0;k<l;k++){
+						if(patterns[i].content[k]==newArr[j].content[k]){
+							temp+=newArr[j].content[k];
+						}
+					}
+					if(temp.length>=l-2){
+						temp=temp.split('[]').join('');
+						number.push(j);
+						cont.push(temp);
+						repeat=true;
+						break;
+					}
+				}
+			}
+			if(!repeat){
+				newArr.push(patterns[i]);
+			}
+		}
+		let length = number.length;
+		if(length>0){
+			for(var m=0;m<length;m++){
+				newArr[number[m]].content=cont[m];
+			}
+		}
+		console.log(newArr);
+	}
+	
 	//send save request
 	fetch(htmlRequest(api.save,JSON.stringify({
 		"seed":this.pageURL,
 		"country":this.country,
 		"category":this.category,
 		"status":this.status,
-		"patterns":tagstore.getSaveFormat()
+		"patterns":newArr
 	}),"application/json")).then(res=>res.json()).then(function(data){
 		console.log(data);
 		__loading.show=false;

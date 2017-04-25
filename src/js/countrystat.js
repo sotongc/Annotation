@@ -62,6 +62,12 @@ let __querydate = new $datequery({
 		},{
 			value:'gh',
 			label:'gh'
+		},{
+			value:'in',
+			label:'in'
+		},{
+			value:'id',
+			label:'id'
 		}]
 	}
 })
