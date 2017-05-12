@@ -184,7 +184,6 @@ window.onresize=function(){
 	__canvas.$once("canvas:updated",redrawTags)
 };
 
-
 /**
  * @ Events used to communication among components
  */
