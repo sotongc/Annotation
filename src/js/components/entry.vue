@@ -5,7 +5,7 @@
 
 			<p class="match-rule">
 				<label>xpath: </label>
-				<input class="input-pattern" type="text" v-model.trim="entry.xpath" @change="enable"/>
+				<input class="input-pattern" type="text" v-model.trim="entry.xpath" @change="enable" autofocus />
 			</p>
 
 			<ul class="attrs" >
@@ -14,6 +14,10 @@
 					<span>{{attr.content}}</span>
 				</li>
 			</ul>
+			<p class="match-rule">
+				<label>marks: </label>
+				<input class="input-pattern" type="text" v-model.trim="entry.markInfo" />
+			</p>
 			<p class="btns" :hashid="entry.hashid">
 				<button type="button" class="test" @click="test">Test</button>
 				<button type="button" class="trash" @click="trash">Trash</button>

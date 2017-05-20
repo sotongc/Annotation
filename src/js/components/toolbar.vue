@@ -8,6 +8,7 @@
 		<input type="checkbox"/>
 		<label>Country:</label>
 		<select v-model="country">
+			<option> </option>
 			<option>US</option>
 			<option>IN</option>
 			<option>IND</option>
@@ -42,7 +43,7 @@
 			},
 			country:{
 				type:String,
-				default:'US'
+				default:''
 			},
 			status:{
 				type:Number,

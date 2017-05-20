@@ -6,7 +6,7 @@ extractor.getDomInfo=function(eve){
 	if(!deepPath){
 		deepPath=this.getParentNode(target);
 	}
-	deepPath=deepPath.filter((el)=>!/document/.test(el.tagName)&&el.tagName);
+	deepPath=deepPath.filter((el)=>!/HTML/.test(el.tagName)&&el.tagName);
 	deepPath=deepPath.map((el)=>el.tagName.toLowerCase());
 	return deepPath.reverse().join("/");
 };

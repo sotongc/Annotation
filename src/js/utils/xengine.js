@@ -15,7 +15,7 @@ xegine.xpath=function(target){
 };
 
 xegine.parent=function(target){
-	return /^html$/i.test(target.tagName)?[target]:[target].concat(this.parent(target.parentNode));
+	return /^body$/i.test(target.tagName)?[target]:[target].concat(this.parent(target.parentNode));
 };
 
 xegine.test=function(element) {

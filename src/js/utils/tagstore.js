@@ -17,7 +17,8 @@ tagstore.add=function(target){
 		this.el[hashid]=target;
 		this.entries[hashid]={
 			xpath:xengine.xpath(target),
-			attrs:[]
+			attrs:[],
+			markInfo:''
 		};
 
 		[target.getAttribute("href")||target.getAttribute("src")||undefined,target.innerText].forEach(function(val,i){
@@ -32,7 +33,8 @@ tagstore.add=function(target){
 tagstore.addEntry=function(){
 	this.entries[this.createID('CUSTOM')]={
 		xpath:'',
-		attrs:[]
+		attrs:[],
+		markInfo:''
 	};
 };
 
@@ -75,7 +77,7 @@ tagstore.getSaveFormat=function(){
 	return Object.keys(this.entries).filter(function(key){
 		return this.entries[key].attrs.length;
 	}.bind(this)).map(function(key){
-		return {type:'xpath',content:this.entries[key].xpath};
+		return {type:'xpath',content:this.entries[key].xpath,markInfo:this.entries[key].markInfo};
 	}.bind(this));
 };
 

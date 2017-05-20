@@ -35,45 +35,6 @@ const $loading=Vue.extend(loading);
 let str = window.location.search;
 const seedURL=str.split('=')[1];
 
-
-let getCookie = function(name){
-	if(document.cookie.length>1){
-		var arr1 = document.cookie.split('; ');
-	    for (var i=0; i<arr1.length; i++) {
-	        var arr2 = arr1[i].split('=');
-	        if ( arr2[0] == name ) {
-	            return decodeURI(arr2[1]);
-	        }
-	    }
-	}
-};
-
-const username = getCookie('username')||'';
-const session = getCookie('session')||'';
-(function(){
-	fetch(api.checklogin,{
-		method:'POST',
-		header:{
-			'Content-Type':'application/json'
-		},
-		mode:'cors',
-		body:JSON.stringify({
-			'username':username,
-			'session':session
-		})
-	}).then(function(res){
-		return res.json();
-	}).then(function(result){
-		if(result.success){
-			console.log(result.success);
-		}else{
-			window.location.assign('./login.html');
-		}
-	}).catch(function(err){
-		console.error(`Failed: ${error}!`);
-	});
-}());
-
 /**
  * @ Object used to get the params of client window
  */
@@ -260,7 +221,6 @@ __tool.$on("annotation:save",function(){
 				newArr[number[m]].content=cont[m];
 			}
 		}
-		console.log(newArr);
 	}
 	
 	//send save request
@@ -271,7 +231,6 @@ __tool.$on("annotation:save",function(){
 		"status":this.status,
 		"patterns":newArr
 	}),"application/json")).then(res=>res.json()).then(function(data){
-		console.log(data);
 		__loading.show=false;
 	}).catch(function(err){
 		alert(err);
@@ -301,7 +260,7 @@ __xpad.$on("entry:test",function(hashid){
 	//request
 	fetch(htmlRequest(api.extractEle,formQuery({
 		url:__tool.pageURL,
-		tag:tagstore.entries[hashid].xpath
+		tag:tagstore.entries[hashid].xpath.split('/').join('>')
 	}))).then(res=>res.json())
 		.then(function(data){
 			let mapTable={
@@ -314,7 +273,6 @@ __xpad.$on("entry:test",function(hashid){
 			}).map(function(key){
 				return {key:key,content:data[key]}
 			});
-
 			__loading.show=false;
 		}).catch(function(err){
 			alert(err);
