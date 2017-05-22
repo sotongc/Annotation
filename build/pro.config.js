@@ -17,7 +17,7 @@ var config={
 		countrystat:'./src/js/countrystat.js',
 		seedstat:'./src/js/seedstat.js',
 		domainstat:'./src/js/domainstat.js',
-		crawler:'./src/js/crawler.js'
+		corpus:'./src/js/corpus.js'
 	},
 	output:{
 		path:path.resolve(__dirname,'../dist'),
@@ -110,7 +110,7 @@ var config={
 	"countrystat",
 	"seedstat",
 	"domainstat",
-	"crawler"
+	"corpus"
 ].forEach(function(chunk){
 	config.plugins.push(new HtmlWebpackPlugin({
 		filename:'view/'+chunk+'.html',

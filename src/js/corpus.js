@@ -24,6 +24,17 @@ const $table = Vue.extend(table);
 const $pagination = Vue.extend(pagination);
 const $loading = Vue.extend(loading);
 
+
+let corpusRequest = function(uri,formData,contentType){
+	return new Request(uri,{
+		method:'POST',
+		headers:{
+			'Content-Type':contentType||'application/x-www-form-urlencoded'
+		},
+		mode:'cors',
+		body:formData
+	})
+}
 /*
  * @ Query & Request initialization
  */
@@ -50,17 +61,17 @@ let __querybox = new $querybox({
 	}
 });
 
-let __table = new $table({
-	el: "#crawlerList",
+let __corpusList = new $table({
+	el: "#corpusList",
 	data:{
-		title: 'CRAWLER LIST',
+		title: 'CORPUS LIST',
 		enable: true,
 		active: true,
 		headings: [
 			{key:'number',text:'Number'},
 			{key:'country',text:'Country'},
 			{key:'domain',text:'Domain'},
-			{key:'crawler',text:'Crawler'},
+			{key:'seed',text:'Corpus'},
 			{key:'createUser',text:'CreateUser'},
 			{key:'lastCrawlTimestamp',text:'LastCrawl'},
 			{key:'lastParseTimestamp',text:'LastParse'},
@@ -82,11 +93,42 @@ let __pagination = new $pagination({
 		pageItems:20,//item per page
 		currentPage:1// page number
 	}
-})
+});
 
 let __loading = new $loading({
 	el: "#loading",
 	data: {
 		show: false
 	}
-})
+});
+
+let dataSource;
+let responseResult={
+	init:function(){
+		__loading.show=true;
+		query.pageNo=__pagination.currentPage;
+		dataSource=fetch(corpusRequest(api.corpusSearch,JSON.stringify({
+			"seed": query.seed,
+			"country": (query.country=='all'?'':query.country),
+			"category": (query.category=='unlimited'?'':query.category),
+			"domain": query.domain,
+			"pageNo": 1,
+			"limit": query.limit
+		}),"application/json")).then(function(res){
+			return res.json();
+		});
+		dataSource.then(function(data){
+			console.log(data);
+			__loading.show=false;
+			data=data.result;
+			__pagination.$data.totalNum=data.totalItemCount;
+			__pagination.$data.currentPage=data.pageNo;
+			__corpusList.$data.list=data.data;
+//			__patternlist.$data.list=data.data[0].patterns;
+		}).catch(function(error){
+			__loading.show=false;
+			console.error(`Failed: ${error}!`);
+		});
+	}
+}
+responseResult.init();
