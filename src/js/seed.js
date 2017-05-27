@@ -34,7 +34,7 @@ const $ebus=new Vue();
 let query={
 	seed:'',
 	country:'all',
-	category:'unlimited',
+	category:'all',
 	domain:'',
 	pageNo:1,
 	limit:20
@@ -95,7 +95,7 @@ let __pannel=new $pannel({
 	el:'#pannel',
 	data:{
 		countries:['all','ke','ng','za','tz','gh','in','id'],
-		category:['unlimited','political','sports','entertainment','game'],
+		category:['all','political','sports','entertainment','game'],
 		query:query
 	}
 });
@@ -195,7 +195,7 @@ let responseUnit={
 		dataLoaded=fetch(seedRequest(api.search,JSON.stringify({
 			"seed": query.seed,
 			"country": (query.country=='all'?'':query.country),
-			"category": (query.category=='unlimited'?'':query.category),
+			"category": (query.category=='all'?'':query.category),
 			"domain": query.domain,
 			"pageNo": 1,
 			"limit": query.limit
@@ -221,7 +221,7 @@ let responseUnit={
 		dataLoaded=fetch(seedRequest(api.search,JSON.stringify({
 			"seed": query.seed,
 			"country": (query.country=='all'?'':query.country),
-			"category": (query.category=='unlimited'?'':query.category),
+			"category": (query.category=='all'?'':query.category),
 			"domain": query.domain,
 			"pageNo": query.pageNo,
 			"limit": query.limit

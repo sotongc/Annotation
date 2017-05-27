@@ -1,6 +1,7 @@
 <template>
 	<div class="queryBox">
-		<span @click="back">back</span>
+		<span v-if="linkname=='topnews'" @click="backCorpus">back</span>
+		<span v-else @click="back">back</span>
 		<span @click="goto">{{linkname}}</span>
 		<label>DateRange:</label>
 		<el-date-picker
@@ -58,6 +59,9 @@
 			},
 			goto: function(){
 				this.$emit("datequery:goto");
+			},
+			backCorpus: function(){
+				window.location.assign('./corpus.html');
 			}
 		}
 	}

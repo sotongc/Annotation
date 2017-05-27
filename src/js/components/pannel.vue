@@ -42,10 +42,10 @@
 	.pannel{padding:10px;margin:15px 40px 5px;}
 	.pannel .statistics{margin-right:50px;}
 	.pannel .statistics .btn{background:#475669;color:#fff;}
-	.pannel label{vertical-align:middle;}
-	.pannel .textfield{width:220px;height:28px;padding:0px 10px;border:1px solid #ccc;}
+	.pannel label{vertical-align:middle;margin-right:5px;}
+	.pannel .textfield{width:180px;height:28px;padding:0px 10px;border:1px solid #ccc;}
 	.pannel .button{height:28px;width:60px;background-color:#323330;color:#fff;border:none;cursor:pointer;}
-	.pannel .button,.pannel .textfield{border-radius:4px;margin-left:10px;outline:none;}
-	.pannel select{height:28px;background-color:inherit;}
-	.pannel input,.pannel select,.pannel label{margin-right:10px;}
+	.pannel .button,.pannel .textfield{border-radius:4px;outline:none;}
+	.pannel select{height:28px;background-color:inherit;width:85px;}
+	.pannel input,.pannel select{margin-right:15px;}
 </style>

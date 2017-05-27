@@ -1,5 +1,11 @@
+/*
+ * import styles from external css file
+ */
 import '../css/common.css';
 import '../css/seed.css';
+/*
+ * import url conf
+ */
 import api from './conf/API.json';
 
 import Vue from 'vue';
@@ -41,7 +47,7 @@ let corpusRequest = function(uri,formData,contentType){
 let query={
 	seed:'',
 	country:'all',
-	category:'unlimited',
+	category:'all',
 	domain:'',
 	pageNo:1,
 	limit:20
@@ -56,7 +62,7 @@ let __querybox = new $querybox({
 	el: "#querybox",
 	data:{
 		countries:['all','ke','ng','za','tz','gh','in','id'],
-		category:['unlimited','political','sports','entertainment','game'],
+		category:['all','political','sports','entertainment','game'],
 		query:query
 	}
 });
@@ -71,7 +77,7 @@ let __corpusList = new $table({
 			{key:'number',text:'Number'},
 			{key:'country',text:'Country'},
 			{key:'domain',text:'Domain'},
-			{key:'seed',text:'Corpus'},
+			{key:'seed',text:'Corpus',color:'#0099e5'},
 			{key:'createUser',text:'CreateUser'},
 			{key:'lastCrawlTimestamp',text:'LastCrawl'},
 			{key:'lastParseTimestamp',text:'LastParse'},
@@ -102,6 +108,25 @@ let __loading = new $loading({
 	}
 });
 
+/*
+ * components interactions
+ */
+__querybox.$on('pannel:onsearch',function(){
+	responseResult.init();
+});
+
+__corpusList.$on('table:selected',function(){
+	dataSource.then(function(data){
+		data=data.result;
+	});
+});
+
+__pagination.$on('page:onchange',function(pagenum){
+	responseResult.pagechange();
+});
+
+
+
 let dataSource;
 let responseResult={
 	init:function(){
@@ -110,7 +135,7 @@ let responseResult={
 		dataSource=fetch(corpusRequest(api.corpusSearch,JSON.stringify({
 			"seed": query.seed,
 			"country": (query.country=='all'?'':query.country),
-			"category": (query.category=='unlimited'?'':query.category),
+			"category": (query.category=='all'?'':query.category),
 			"domain": query.domain,
 			"pageNo": 1,
 			"limit": query.limit
@@ -124,11 +149,31 @@ let responseResult={
 			__pagination.$data.totalNum=data.totalItemCount;
 			__pagination.$data.currentPage=data.pageNo;
 			__corpusList.$data.list=data.data;
-//			__patternlist.$data.list=data.data[0].patterns;
 		}).catch(function(error){
 			__loading.show=false;
 			console.error(`Failed: ${error}!`);
 		});
+	},
+	pagechange:function(){
+		__loading.show=true;
+		query.pageNo=__pagination.currentPage;
+		dataSource=fetch(corpusRequest(api.corpusSearch,JSON.stringify({
+			"seed": query.seed,
+			"country": (query.country=='all'?'':query.country),
+			"category": (query.category=='all'?'':query.category),
+			"domain": query.domain,
+			"pageNo": query.pageNo,
+			"limit": query.limit
+		}),"application/json")).then(function(res){
+			return res.json();
+		});
+		dataSource.then(function(data){
+			data=data.result;
+			__corpusList.$data.list=data.data;
+			__corpusList.$data.pageNo=data.pageNo;
+			__corpusList.$data.pageSize=data.pageSize;
+			__loading.show=false;
+		})
 	}
 }
 responseResult.init();

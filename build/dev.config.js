@@ -13,7 +13,9 @@ module.exports={
 		countrystat:'./src/js/countrystat.js',
 		seedstat:'./src/js/seedstat.js',
 		domainstat:'./src/js/domainstat.js',
-		corpus:'./src/js/corpus.js'
+		corpus:'./src/js/corpus.js',
+		topnews:'./src/js/topnews.js',
+		crawlstatis:'./src/js/crawlstatis.js'
 	},
 	output:{
 		path:path.resolve(__dirname,'dist'),

@@ -13,5 +13,7 @@
 	"staseed":"http://107.167.123.93:8080/news-parse-api/dailysta/seed",
 	"domain":"http://107.167.123.93:8080/news-parse-api/dailysta/domain",
 	"checklogin":"http://107.167.123.93:8080/news-parse-api/user/checkLogin",
-	"corpusSearch":"http://107.167.123.93:5505/socialdata-news-web-api/seed/search"
+	"corpusSearch":"http://107.167.123.93:5505/socialdata-news-web-api/seed/search",
+	"topnews":"http://107.167.123.93:5505/socialdata-news-web-api/seed/seedtopnews",
+	"crawlstatis":"http://107.167.123.93:5505/socialdata-news-web-api/seed/crawlstat"
 }

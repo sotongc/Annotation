@@ -16,6 +16,15 @@
 					<template v-else-if="th.key == 'url'">
 						<a :href="item['url']" target="_blank">{{item[th.key]}}</a>
 					</template>
+					<template v-else-if="th.key == 'pictures' && item[th.key] == ''">
+						no image
+					</template>
+					<template v-else-if="th.key == 'pictures' && item[th.key] != ''">
+						<img :src="item['pictures'][0]" class="pic" />
+					</template>
+					<a v-else-if="th.key == 'title'" :href="item['url']" target="_blank" class="title">
+						{{item['title']}}
+					</a>
 					<template v-else>
 						{{(th.key == 'parseTimestamp' || th.key == 'crawlTimestamp' || th.key == 'processTimestamp' || th.key == 'modifyTime' || th.key == 'createTime'|| th.key=='lastModifyTimestamp') ? getTime(item[th.key]):item[th.key]}}
 					</template>
@@ -59,8 +68,8 @@
 </script>
 <style>
 	.table{width:100%;border-collapse:collapse;text-align:center;font-size:12px;margin-bottom:20px;}
-	.table tr{line-height:23px;border-bottom:1px solid #ccc;}
-	.table td{border:1px solid #ccc;border-top:none;border-bottom:none;white-space:nowrap;max-width:1000px;overflow:hidden;text-overflow:ellipsis;}
+	.table tr{line-height:26px;}
+	.table td{border:1px solid #ccc;white-space:nowrap;max-width:1000px;overflow:hidden;text-overflow:ellipsis;}
 	.table th{color:#fff;background-color:#0099e5;}
 	.table th:first-child{width:70px;}
 	.gray{color:#ababab;}
@@ -68,4 +77,6 @@
 	.table .enable{cursor:pointer;}
 	.table .enable:hover{background-color:#f5da55;}
 	.table .selected{background-color:#f5da55;}
+	.table .pic{height:80px; overflow:hidden;}
+	.table .title{text-decoration:underline;}
 </style>

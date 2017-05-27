@@ -25,8 +25,14 @@
 					</template>
 				</td>
 				<td>
-					<span class="btn" @click="toCrawlstat(item['seed'])">crawlstat</span>
-					<span class="btn" @click="toSeedNews(item['seed'])">seednews</span>
+					<template v-if="title=='CORPUS LIST'">
+						<span class="btn" @click="toCrawlstatis(item['seed'])">crawlstat</span>
+						<span class="btn" @click="toTopNews(item['seed'])">topnews</span>
+					</template>
+					<template v-else>
+						<span class="btn" @click="toCrawlstat(item['seed'])">crawlstat</span>
+						<span class="btn" @click="toSeedNews(item['seed'])">seednews</span>
+					</template>
 				</td>
 			</tr>
 		</tbody>
@@ -66,8 +72,14 @@
 			toCrawlstat:function(domain){
 				window.location.assign('./crawlstat.html?seed='+domain);
 			},
+			toCrawlstatis:function(domain){
+				window.location.assign('./crawlstatis.html?seed='+domain);
+			},
 			toSeedNews: function(domain){
 				window.location.assign('./seednews.html?seed='+domain);
+			},
+			toTopNews: function(domain){
+				window.location.assign('./topnews.html?seed='+domain);
 			},
 			toXpath: function(seed){
 				window.location.assign('./xpath.html?seed='+seed);

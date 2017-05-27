@@ -35,6 +35,7 @@ const $loading=Vue.extend(loading);
 let str = window.location.search;
 const seedURL=str.split('=')[1];
 
+
 /**
  * @ Object used to get the params of client window
  */
@@ -169,6 +170,8 @@ __frame.$on("element:select",function(bbox,target){
 	
 	tagstore.add(target);
 	__xpad.entries=tagstore.getEntries();
+	console.log(JSON.stringify(tagstore.getEntries()));
+	console.log(tagstore.getSaveFormat());
 });
 
 __frame.$on("frame:scroll",redrawTags);
@@ -258,21 +261,23 @@ __xpad.$on("entry:test",function(hashid){
 	__loading.show=true;
 
 	//request
-	fetch(htmlRequest(api.extractEle,formQuery({
+	fetch(htmlRequest(api.extractEle,JSON.stringify({
 		url:__tool.pageURL,
-		tag:tagstore.entries[hashid].xpath.split('/').join('>')
-	}))).then(res=>res.json())
+		tag:tagstore.entries[hashid].xpath
+	}),'application/json')).then(res=>res.json())
 		.then(function(data){
 			let mapTable={
 				text:'content',
-				url:'url'
+				url:'url',
+				src:'src'
 			};
-
-			tagstore.entries[hashid].attrs=['text','url'].filter(function(key){
-				return data.hasOwnProperty(key)?mapTable[key]:false;
-			}).map(function(key){
-				return {key:key,content:data[key]}
-			});
+			for(var i=0;i<data.length;i++){
+				tagstore.entries[hashid].attrs.push.apply(tagstore.entries[hashid].attrs,['text','url','src'].filter(function(key){
+					return data[i].hasOwnProperty(key)?mapTable[key]:false;
+				}).map(function(key){
+					return {key:key,content:data[i][key]}
+				}));
+			}
 			__loading.show=false;
 		}).catch(function(err){
 			alert(err);
@@ -326,6 +331,7 @@ function initialize(){
 if(seedURL&&seedURL!=''){
 	__tool.pageURL=seedURL;
 	getHtml(__tool.pageURL);
+	getPatterns(__tool.pageURL);
 }
 
 
@@ -351,4 +357,19 @@ function getHtml(url){
 		__loading.show=false;
 		alert(err);
 	});
+}
+function getPatterns(url){
+	fetch(htmlRequest(api.search,JSON.stringify({
+		"seed":url
+	}),'application/json'))
+	.then(res=>res.json())
+	.then(function(data){
+		data=data.result;
+		__tool.country=data.data[0].country;
+		__tool.category=data.data[0].category;
+		__tool.status=data.data[0].status;
+//		__xpad.entries=data.data[0].patterns;
+	}).catch(function(err){
+		console.log(err);
+	})
 }

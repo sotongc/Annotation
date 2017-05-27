@@ -9,10 +9,13 @@
 		<label>Country:</label>
 		<select v-model="country">
 			<option> </option>
-			<option>US</option>
-			<option>IN</option>
-			<option>IND</option>
-			<option>AF</option>
+			<option>ke</option>
+			<option>ng</option>
+			<option>tz</option>
+			<option>za</option>
+			<option>gh</option>
+			<option>id</option>
+			<option>in</option>
 		</select>
 		<label>Category:</label>
 		<input type="text" class="category" v-model="category"/>
