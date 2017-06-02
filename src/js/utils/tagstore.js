@@ -12,7 +12,6 @@ tagstore.entries={};
 tagstore.add=function(target){
 	if(!target.dataset.hasOwnProperty("hashid")){
 		let hashid=this.createID(target.tagName);
-
 		//add entry & target ref		
 		this.el[hashid]=target;
 		this.entries[hashid]={

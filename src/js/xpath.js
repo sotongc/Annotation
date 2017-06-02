@@ -170,8 +170,6 @@ __frame.$on("element:select",function(bbox,target){
 	
 	tagstore.add(target);
 	__xpad.entries=tagstore.getEntries();
-	console.log(JSON.stringify(tagstore.getEntries()));
-	console.log(tagstore.getSaveFormat());
 });
 
 __frame.$on("frame:scroll",redrawTags);
@@ -257,9 +255,8 @@ __xpad.$on("entry:test",function(hashid){
 	//clear tagstore el if item was annotated
 	tagstore.deleteEl(hashid);
 	redrawTags();
-
 	__loading.show=true;
-
+	
 	//request
 	fetch(htmlRequest(api.extractEle,JSON.stringify({
 		url:__tool.pageURL,
@@ -271,13 +268,15 @@ __xpad.$on("entry:test",function(hashid){
 				url:'url',
 				src:'src'
 			};
+			const arr=[];
 			for(var i=0;i<data.length;i++){
-				tagstore.entries[hashid].attrs.push.apply(tagstore.entries[hashid].attrs,['text','url','src'].filter(function(key){
+				arr.push.apply(arr,['text','url','src'].filter(function(key){
 					return data[i].hasOwnProperty(key)?mapTable[key]:false;
 				}).map(function(key){
 					return {key:key,content:data[i][key]}
 				}));
 			}
+			tagstore.entries[hashid].attrs=arr;
 			__loading.show=false;
 		}).catch(function(err){
 			alert(err);
@@ -368,7 +367,38 @@ function getPatterns(url){
 		__tool.country=data.data[0].country;
 		__tool.category=data.data[0].category;
 		__tool.status=data.data[0].status;
-//		__xpad.entries=data.data[0].patterns;
+		for(var i=0;i<data.data[0].patterns.length;i++){
+			let hashid = tagstore.createID(data.data[0].patterns[i].id);
+			tagstore.entries[hashid]={
+				xpath:data.data[0].patterns[i].content,
+				attrs:[],
+				markInfo:data.data[0].patterns[i].markInfo
+			};
+			fetch(htmlRequest(api.extractEle,JSON.stringify({
+				"url":url,
+				"tag":data.data[0].patterns[i].content
+			}),'application/json'))
+			.then(res=>res.json())
+			.then(function(data){
+				let mapTable={
+					text:'content',
+					url:'url',
+					src:'src'
+				};
+				const arr=[];
+				for(var i=0;i<data.length;i++){
+					arr.push.apply(arr,['text','url','src'].filter(function(key){
+						return data[i].hasOwnProperty(key)?mapTable[key]:false;
+					}).map(function(key){
+						return {key:key,content:data[i][key]}
+					}));
+				}
+				tagstore.entries[hashid].attrs=arr;
+			}).catch(function(err){
+				alert(err);
+			});
+		}
+		__xpad.entries=tagstore.getEntries();
 	}).catch(function(err){
 		console.log(err);
 	})
