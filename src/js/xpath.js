@@ -258,7 +258,7 @@ __xpad.$on("entry:test",function(hashid){
 	__loading.show=true;
 	
 	//request
-	fetch(htmlRequest(api.extractEle,JSON.stringify({
+	fetch(htmlRequest(api.extractEl,JSON.stringify({
 		url:__tool.pageURL,
 		tag:tagstore.entries[hashid].xpath
 	}),'application/json')).then(res=>res.json())
@@ -374,9 +374,9 @@ function getPatterns(url){
 				attrs:[],
 				markInfo:data.data[0].patterns[i].markInfo
 			};
-			fetch(htmlRequest(api.extractEle,JSON.stringify({
-				"url":url,
-				"tag":data.data[0].patterns[i].content
+			fetch(htmlRequest(api.extractEl,JSON.stringify({
+				"tag":data.data[0].patterns[i].content,
+				"url":url
 			}),'application/json'))
 			.then(res=>res.json())
 			.then(function(data){

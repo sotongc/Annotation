@@ -15,5 +15,6 @@
 	"checklogin":"http://107.167.123.93:8080/news-parse-api/user/checkLogin",
 	"corpusSearch":"http://107.167.123.93:5505/socialdata-news-web-api/seed/search",
 	"topnews":"http://107.167.123.93:5505/socialdata-news-web-api/seed/seedtopnews",
-	"crawlstatis":"http://107.167.123.93:5505/socialdata-news-web-api/seed/crawlstat"
+	"crawlstatis":"http://107.167.123.93:5505/socialdata-news-web-api/seed/crawlstat",
+	"extractEl":"http://107.167.123.93:5505/socialdata-news-web-api/news/parse"
 }
