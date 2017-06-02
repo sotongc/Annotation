@@ -279,7 +279,7 @@ __xpad.$on("entry:test",function(hashid){
 			tagstore.entries[hashid].attrs=arr;
 			__loading.show=false;
 		}).catch(function(err){
-			alert(err);
+			console.log(err);
 			__loading.show=false;
 		});
 });
@@ -395,7 +395,7 @@ function getPatterns(url){
 				}
 				tagstore.entries[hashid].attrs=arr;
 			}).catch(function(err){
-				alert(err);
+				console.log(err);
 			});
 		}
 		__xpad.entries=tagstore.getEntries();
