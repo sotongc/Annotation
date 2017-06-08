@@ -26,6 +26,8 @@ let query={
 	country:''
 }
 
+const type = parseInt(window.location.search.split('=')[1]);
+
 let crawlRequest = function(uri,formData,contentType){
 	return new Request(uri,{
 		method:'POST',
@@ -46,6 +48,7 @@ let __querydate = new $datequery({
 	el:'#querydate',
 	data:{
 		query:query,
+		type: type,
 		tabname:'Country Statistics',
 		options:[{
 			value:'ke',
@@ -125,7 +128,7 @@ let responseResult={
 	init: function(num){
 		__loading.show=true;
 		let page = num || __pagination.currentPage;
-		dataSource = fetch(crawlRequest(api.country,JSON.stringify({
+		dataSource = fetch(crawlRequest((type==0?api.country:api.corCountry),JSON.stringify({
 			'pageNo':page,
 			'limit':__pagination.pageItems,
 			'fromDate':responseResult.getTime(query.daterange[0]),

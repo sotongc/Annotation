@@ -61,6 +61,7 @@ let __nav = new $header({
 let __querybox = new $querybox({
 	el: "#querybox",
 	data:{
+		type:1,
 		countries:['all','ke','ng','za','tz','gh','in','id'],
 		category:['all','political','sports','entertainment','game'],
 		query:query

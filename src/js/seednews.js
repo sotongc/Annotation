@@ -113,7 +113,7 @@ __querytime.$on('datequery:query',function(){
 	responseResult.init(1);
 });
 __querytime.$on('datequery:goto',function(){
-	window.location.assign('./crawlstat.html?seed='+seedURL)
+	window.location.assign('./crawlstat.html?type=0&seed='+seedURL)
 });
 
 /*

@@ -29,6 +29,8 @@ let query={
 	domain:''
 }
 
+const type = parseInt(window.location.search.split('=')[1]);
+
 let crawlRequest = function(uri,formData,contentType){
 	return new Request(uri,{
 		method:'POST',
@@ -59,6 +61,7 @@ let __datetab = new $datetab({
 	el:'#querydate',
 	data:{
 		query:query,
+		type: type,
 		tabname:'Domain Statistics',
 		options:[{
 			value:'ke',
@@ -150,7 +153,7 @@ let responseResult={
 	init: function(num){
 		__loading.show=true;
 		let page = num || __pagination.currentPage;
-		dataSource = fetch(crawlRequest(api.domain,JSON.stringify({
+		dataSource = fetch(crawlRequest((type==0?api.domain:api.corDomain),JSON.stringify({
 			'pageNo':page,
 			'limit':__pagination.pageItems,
 			'fromDate':responseResult.getTime(query.daterange[0]),

@@ -2,7 +2,10 @@
 	<div class="navtab">
 		<el-breadcrumb separator="/" class="navigator">
 			<el-breadcrumb-item><a href="./home.html"><el-tag class="tag" type="success">Home</el-tag></a></el-breadcrumb-item>
-	 	 	<el-breadcrumb-item><a href="./seed.html"><el-tag class="tag" type="primary">Statistics</el-tag></a></el-breadcrumb-item>
+	 	 	<el-breadcrumb-item>
+	 	 		<a v-if="type == 0" href="./seed.html"><el-tag class="tag" type="primary">Statistics</el-tag></a>
+	 	 		<a v-else href="./corpus.html"><el-tag class="tag" type="primary">Statistics</el-tag></a>
+	 	 	</el-breadcrumb-item>
 	 	 	<el-breadcrumb-item><el-tag type="gray" class="tag">{{tabname}}</el-tag></el-breadcrumb-item>
 		</el-breadcrumb>
 		<div class="querybox">
@@ -103,9 +106,13 @@
 	.navtab .query{
 		color:#fff;
 		font-weight:bold;
-		background:#475669;
+		background: #286090;
 		border-radius:5px;
 		border:none;
-		padding:6px;
+		padding:6px 8px;
+		box-shadow: 2px 2px 3px rgba(0,0,0,.2);
+	}
+	.navtab .query:hover{
+		background: #204d74;
 	}
 </style>

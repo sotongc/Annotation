@@ -18,8 +18,7 @@ var config={
 		seedstat:'./src/js/seedstat.js',
 		domainstat:'./src/js/domainstat.js',
 		corpus:'./src/js/corpus.js',
-		topnews:'./src/js/topnews.js',
-		crawlstatis:'./src/js/crawlstatis.js'
+		topnews:'./src/js/topnews.js'
 	},
 	output:{
 		path:path.resolve(__dirname,'../dist'),
@@ -113,8 +112,7 @@ var config={
 	"seedstat",
 	"domainstat",
 	"corpus",
-	"topnews",
-	"crawlstatis"
+	"topnews"
 ].forEach(function(chunk){
 	config.plugins.push(new HtmlWebpackPlugin({
 		filename:'view/'+chunk+'.html',

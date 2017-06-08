@@ -70,10 +70,10 @@
 				}
 			},
 			toCrawlstat:function(domain){
-				window.location.assign('./crawlstat.html?seed='+domain);
+				window.location.assign('./crawlstat.html?type=0&seed='+domain);
 			},
 			toCrawlstatis:function(domain){
-				window.location.assign('./crawlstatis.html?seed='+domain);
+				window.location.assign('./crawlstat.html?type=1&seed='+domain);
 			},
 			toSeedNews: function(domain){
 				window.location.assign('./seednews.html?seed='+domain);
@@ -99,5 +99,6 @@
 	.table .enable:hover{background-color:#f5da55;}
 	.table .selected{background-color:#f5da55;}
 	.table .btnTh{width:170px;}
-	.table .btn{display:inline-block;padding:0 5px;background:#738195;color:#fff;border-radius:3px;line-height:24px;margin:0 3px;}
+	.table .btn{display:inline-block;padding:0 5px;background:rgb(146,89,178);color:#fff;border-radius:3px;line-height:24px;margin:0 3px;}
+	.table .btn:hover{box-shadow: 1px 1px 2px rgba(0,0,0,.3);}
 </style>

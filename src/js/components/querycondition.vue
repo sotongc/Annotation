@@ -48,16 +48,25 @@
 		display:inline-block;
 		line-height:30px;
 		padding:0 10px;
-		background:#8492A6;
 		color:#fff;
-		margin-right:10px;
+		margin-right:15px;
 		border-radius:5px;
+		border:1px solid #204d74;
+		background:#286090;
+		cursor:pointer;
 	}
 	.querybox>span:hover{
-		box-shadow: 0 0 10px #324057;
+		border:1px solid #122b40;
+		background:#204d74;
 	}
 	.querybox>span:nth-child(2){
 		margin-right:50px;
+		border:1px solid #5cb85c;
+		background:#4cae4c;
+	}
+	.querybox>span:nth-child(2):hover{
+		border-color:#398439;
+		background:#449d44;
 	}
 	.querybox .seedinp{
 		width:150px;
@@ -82,9 +91,13 @@
 	.querybox .query{
 		color:#fff;
 		font-weight:bold;
-		background:#475669;
+		background: #286090;
 		border-radius:5px;
 		border:none;
-		padding:6px;
+		padding:6px 8px;
+		box-shadow: 2px 2px 3px rgba(0,0,0,.2);
+	}
+	.querybox .query:hover{
+		background: #204d74;
 	}
 </style>

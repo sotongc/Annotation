@@ -34,7 +34,8 @@ const $loading = Vue.extend(loading);
 
 
 let str = window.location.search;
-const seedURL=str.split('=')[1];
+const seedURL=str.split('&')[1].split('=')[1];
+const type=parseInt(str.split('&')[0].split('=')[1]);
 /*
  * request function
  */
@@ -63,15 +64,16 @@ let __head = new $header({
 let __datequery = new $datequery({
 	el:'#query',
 	data: {
+		type:type,
 		query:query,
-		linkname:'seednews'
+		linkname:(type==0?'seednews':'topnews')
 	}
 })
 
 let __crawlList = new $table({
 	el:'#crawlList',
 	data: {
-		title:'CrawlStat List',
+		title:'CRAWLSTAT LIST',
 		enable: true,
 		active: true,
 		headings:[
@@ -110,7 +112,12 @@ __datequery.$on('datequery:query',function(){
 	responseResult.init(1);
 });
 __datequery.$on('datequery:goto',function(){
-	window.location.assign('./seednews.html?seed='+seedURL)
+	if(type == 0){
+		window.location.assign('./seednews.html?seed='+seedURL);
+	}else{
+		window.location.assign(`./topnews.html?seed=${seedURL}`);
+	}
+	
 })
 
 __page.$on('page:onchange',function(pagenum){
@@ -125,7 +132,7 @@ let responseResult={
 	init: function(num){
 		__loading.show=true;
 		let page = num || __page.currentPage;
-		dataSource = fetch(crawlRequest(api.crawlstat,JSON.stringify({
+		dataSource = fetch(crawlRequest((type==0?api.crawlstat:api.crawlstatis),JSON.stringify({
 			'seed':seedURL,
 			'pageNo':page,
 			'limit':__page.pageItems,

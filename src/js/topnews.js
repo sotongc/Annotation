@@ -139,7 +139,7 @@ __querycondition.$on('condition:query',function(){
 });
 
 __querycondition.$on('condition:goto',function(){
-	window.location.assign('./crawlstatis.html?'+seedURL);
+	window.location.assign('./crawlstat.html?type=1&seed='+seedURL);
 });
 
 let responseData;
