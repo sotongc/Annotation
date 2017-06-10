@@ -243,6 +243,8 @@ __tool.$on("annotation:save",function(){
 
 __tool.$on("frame:load",function(){
 	getHtml(this.pageURL);
+	getPatterns(this.pageURL);
+	
 });
 
 __tool.$on("annotation:display",function(){
