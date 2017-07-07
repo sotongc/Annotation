@@ -88,6 +88,9 @@ let __querycondition = new $querycondition({
 		},{
 			value:'id',
 			label:'id'
+		},{
+			value:'hindi',
+			label:'hindi'
 		}]
 	}
 });

@@ -16,6 +16,7 @@
 			<option>gh</option>
 			<option>id</option>
 			<option>in</option>
+			<option>hindi</option>
 		</select>
 		<label>Category:</label>
 		<input type="text" class="category" v-model="category"/>

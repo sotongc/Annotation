@@ -84,6 +84,9 @@ let __datetab = new $datetab({
 		},{
 			value:'id',
 			label:'id'
+		},{
+			value:'hindi',
+			label:'hindi'
 		}],
 		conditions:[{
 			value:'domain',

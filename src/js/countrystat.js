@@ -71,6 +71,9 @@ let __querydate = new $datequery({
 		},{
 			value:'id',
 			label:'id'
+		},{
+			value:'hindi',
+			label:'hindi'
 		}]
 	}
 })

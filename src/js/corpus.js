@@ -62,7 +62,7 @@ let __querybox = new $querybox({
 	el: "#querybox",
 	data:{
 		type:1,
-		countries:['all','ke','ng','za','tz','gh','in','id'],
+		countries:['all','ke','ng','za','tz','gh','in','id','hindi'],
 		category:['all','political','sports','entertainment','game'],
 		query:query
 	}
