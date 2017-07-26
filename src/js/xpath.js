@@ -33,7 +33,13 @@ const $loading=Vue.extend(loading);
 
 
 let str = window.location.search;
-const seedURL=str.split('=')[1];
+var seedURL = '';
+var type = 0;
+if(str){
+	seedURL=str.split('&')[1].split('=')[1];
+	type=parseInt(str.split('&')[0].split('=')[1]);
+}
+
 
 
 /**
@@ -85,6 +91,7 @@ let __nav=new $nav({
 let __tool=new $tool({
 	el:"#toolbar",
 	data:{
+		type: type,
 		display:'Show'
 	}
 });
@@ -184,11 +191,15 @@ __tool.$on("annotation:active",function(){
 	__info.listshow=false;
 });
 
-__tool.$on("annotation:save",function(){
+__tool.$on("annotation:save",function(type){
 	__loading.show=true;
 	let patterns = tagstore.getSaveFormat();
+	var newArr = [];
 	let len = patterns.length;
-	const newArr=[patterns[0]];
+	if(len>0){
+		newArr=[patterns[0]];
+	}
+	
 	var number=[];
 	var cont=[];
 	if(len>1){
@@ -225,18 +236,33 @@ __tool.$on("annotation:save",function(){
 	}
 	
 	//send save request
-	fetch(htmlRequest(api.save,JSON.stringify({
-		"seed":this.pageURL,
-		"country":this.country,
-		"category":this.category,
-		"status":this.status,
-		"patterns":newArr
-	}),"application/json")).then(res=>res.json()).then(function(data){
-		__loading.show=false;
-	}).catch(function(err){
-		alert(err);
-		__loading.show=false;
-	});
+	if(type == 1){
+		fetch(htmlRequest(api.corSave,JSON.stringify({
+			"seed":this.pageURL,
+			"country":this.country,
+			"category":this.category,
+			"status":this.status,
+			"patterns":newArr
+		}),"application/json")).then(res=>res.json()).then(function(data){
+			__loading.show=false;
+		}).catch(function(err){
+			alert(err);
+			__loading.show=false;
+		});
+	}else{
+		fetch(htmlRequest(api.save,JSON.stringify({
+			"seed":this.pageURL,
+			"country":this.country,
+			"category":this.category,
+			"status":this.status,
+			"patterns":newArr
+		}),"application/json")).then(res=>res.json()).then(function(data){
+			__loading.show=false;
+		}).catch(function(err){
+			alert(err);
+			__loading.show=false;
+		});
+	}
 
 	initialize();
 });
@@ -260,7 +286,13 @@ __xpad.$on("entry:test",function(hashid){
 	__loading.show=true;
 	
 	//request
-	fetch(htmlRequest(api.extractEl,JSON.stringify({
+	var uri='';
+	if(type == 1){
+		uri = api.extractEl;
+	}else{
+		uri = api.extractEle;
+	}
+	fetch(htmlRequest(uri,JSON.stringify({
 		url:__tool.pageURL,
 		tag:tagstore.entries[hashid].xpath
 	}),'application/json')).then(res=>res.json())

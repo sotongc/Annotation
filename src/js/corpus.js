@@ -71,6 +71,7 @@ let __querybox = new $querybox({
 let __corpusList = new $table({
 	el: "#corpusList",
 	data:{
+		type:1,
 		title: 'CORPUS LIST',
 		enable: true,
 		active: true,

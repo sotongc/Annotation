@@ -104,6 +104,7 @@ let __pannel=new $pannel({
 let __seedlist=new $table({
 	el:'#seedList',
 	data:{
+		type:0,
 		title:'SEED LIST',
 		enable:true,
 		active:true,

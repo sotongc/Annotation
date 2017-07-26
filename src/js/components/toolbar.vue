@@ -29,7 +29,7 @@
 		<!-- seed load end -->
 
 		<button type="button" class="annotation" @click="active">Annotation</button>
-		<button type="button" class="save" @click="save">Save</button>
+		<button type="button" class="save" @click="save(type)">Save</button>
 		<button type="button" class="show-hide" @click="show">{{display}}</button>
 		
 	</div>
@@ -58,11 +58,14 @@
 			active:function(){
 				this.$emit("annotation:active");
 			},
-			save:function(){
-				this.$emit("annotation:save");
+			save:function(type){
+				this.$emit("annotation:save",type);
 			},
 			start:function(){
 				this.$emit("frame:load");
+			},
+			corSave:function(){
+				this.$emit("")
 			},
 			show:function(){
 				this.display=Object.is('Show',this.display)?'Hide':'Show';

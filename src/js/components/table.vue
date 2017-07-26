@@ -17,7 +17,7 @@
 					<template v-else-if="th.key=='lastCrawlTimestamp'|| th.key == 'lastParseTimestamp'">
 						{{getTime(item[th.key])}}
 					</template>
-					<a v-else-if="th.key=='seed'" @click="toXpath(item['seed'])">
+					<a v-else-if="th.key=='seed'" @click="toXpath(item['seed'],type)">
 						{{item[th.key]}}
 					</a>
 					<template v-else>
@@ -81,8 +81,8 @@
 			toTopNews: function(domain){
 				window.location.assign('./topnews.html?seed='+domain);
 			},
-			toXpath: function(seed){
-				window.location.assign('./xpath.html?seed='+seed);
+			toXpath: function(seed,type){
+				window.location.assign(`./xpath.html?type=${type}&seed=${seed}`);
 			}
 		}
 	}

@@ -34,8 +34,12 @@ const $loading = Vue.extend(loading);
 
 
 let str = window.location.search;
-const seedURL=str.split('&')[1].split('=')[1];
-const type=parseInt(str.split('&')[0].split('=')[1]);
+var seedURL = '';
+var type = 0;
+if(str){
+	seedURL=str.split('&')[1].split('=')[1];
+	type=parseInt(str.split('&')[0].split('=')[1]);
+}
 /*
  * request function
  */
