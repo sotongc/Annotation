@@ -205,7 +205,6 @@ let responseUnit={
 			return res.json();
 		});
 		dataLoaded.then(function(data){
-			console.log(data);
 			__loading.show=false;
 			data=data.result;
 			__page.$data.totalNum=data.totalItemCount;

@@ -20,5 +20,5 @@
 	"corCountry":"http://107.167.123.93:5505/socialdata-news-web-api/dailysta/country",
 	"corSeed":"http://107.167.123.93:5505/socialdata-news-web-api/dailysta/seed",
 	"corDomain":"http://107.167.123.93:5505/socialdata-news-web-api/dailysta/domain",
-	"corSave":"http://107.167.123.93:5505/socialdata-news-web-api/seed/save"
+	"corSave":"http://107.167.123.93:5505/socialdata-news-web-api/seed/savexpath"
 }

@@ -191,7 +191,7 @@ __tool.$on("annotation:active",function(){
 	__info.listshow=false;
 });
 
-__tool.$on("annotation:save",function(type){
+__tool.$on("annotation:save",function(){
 	__loading.show=true;
 	let patterns = tagstore.getSaveFormat();
 	var newArr = [];
@@ -236,41 +236,41 @@ __tool.$on("annotation:save",function(type){
 	}
 	
 	//send save request
+	let saveUri ='';
 	if(type == 1){
-		fetch(htmlRequest(api.corSave,JSON.stringify({
-			"seed":this.pageURL,
-			"country":this.country,
-			"category":this.category,
-			"status":this.status,
-			"patterns":newArr
-		}),"application/json")).then(res=>res.json()).then(function(data){
-			__loading.show=false;
-		}).catch(function(err){
-			alert(err);
-			__loading.show=false;
-		});
+		saveUri = api.corSave;
 	}else{
-		fetch(htmlRequest(api.save,JSON.stringify({
-			"seed":this.pageURL,
-			"country":this.country,
-			"category":this.category,
-			"status":this.status,
-			"patterns":newArr
-		}),"application/json")).then(res=>res.json()).then(function(data){
-			__loading.show=false;
-		}).catch(function(err){
-			alert(err);
-			__loading.show=false;
-		});
+		saveUri = api.save;
 	}
+
+	fetch(htmlRequest(saveUri,JSON.stringify({
+		"seed":this.pageURL,
+		"country":this.country,
+		"category":this.category,
+		"status":this.status,
+		"patterns":newArr
+	}),"application/json")).then(res=>res.json()).then(function(data){
+		__loading.show=false;
+	}).catch(function(err){
+		alert(err);
+		__loading.show=false;
+	});
 
 	initialize();
 });
 
 __tool.$on("frame:load",function(){
 	getHtml(this.pageURL);
-	getPatterns(this.pageURL);
-	
+	let uri='';
+	let searchUri='';
+	if(type == 1){
+		uri = api.extractEl;
+		searchUri = api.corpusSearch;
+	}else{
+		uri = api.extractEle;
+		searchUri = api.search;
+	}
+	getPatterns(this.pageURL,uri,searchUri);
 });
 
 __tool.$on("annotation:display",function(){
@@ -286,7 +286,7 @@ __xpad.$on("entry:test",function(hashid){
 	__loading.show=true;
 	
 	//request
-	var uri='';
+	let uri='';
 	if(type == 1){
 		uri = api.extractEl;
 	}else{
@@ -364,7 +364,16 @@ function initialize(){
 if(seedURL&&seedURL!=''){
 	__tool.pageURL=seedURL;
 	getHtml(__tool.pageURL);
-	getPatterns(__tool.pageURL);
+	let uri='';
+	let searchUri='';
+	if(type == 1){
+		uri = api.extractEl;
+		searchUri = api.corpusSearch;
+	}else{
+		uri = api.extractEle;
+		searchUri = api.search;
+	}
+	getPatterns(__tool.pageURL,uri,searchUri);
 }
 
 
@@ -391,8 +400,8 @@ function getHtml(url){
 		alert(err);
 	});
 }
-function getPatterns(url){
-	fetch(htmlRequest(api.search,JSON.stringify({
+function getPatterns(url,uri,searchUri){
+	fetch(htmlRequest(searchUri,JSON.stringify({
 		"seed":url
 	}),'application/json'))
 	.then(res=>res.json())
@@ -408,7 +417,7 @@ function getPatterns(url){
 				attrs:[],
 				markInfo:data.data[0].patterns[i].markInfo
 			};
-			fetch(htmlRequest(api.extractEl,JSON.stringify({
+			fetch(htmlRequest(uri,JSON.stringify({
 				"tag":data.data[0].patterns[i].content,
 				"url":url
 			}),'application/json'))

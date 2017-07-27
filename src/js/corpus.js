@@ -145,7 +145,6 @@ let responseResult={
 			return res.json();
 		});
 		dataSource.then(function(data){
-			console.log(data);
 			__loading.show=false;
 			data=data.result;
 			__pagination.$data.totalNum=data.totalItemCount;
