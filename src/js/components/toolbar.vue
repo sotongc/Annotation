@@ -22,7 +22,7 @@
 		<input type="text" class="category" v-model="category"/>
 		<label>Status:</label>
 		<select v-model="status">
-			<option value="0">pause</option>
+			<option value="2">pause</option>
 			<option value="1">running</option>
 		</select>
 		<button type="button" class="start" @click="start">Start</button>
