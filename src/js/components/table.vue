@@ -76,10 +76,10 @@
 				window.location.assign('./crawlstat.html?type=1&seed='+domain);
 			},
 			toSeedNews: function(domain){
-				window.location.assign('./seednews.html?seed='+domain);
+				window.location.assign('./seednews.html?type=0&seed='+domain);
 			},
 			toTopNews: function(domain){
-				window.location.assign('./topnews.html?seed='+domain);
+				window.location.assign('./seednews.html?type=1&seed='+domain);
 			},
 			toXpath: function(seed,type){
 				window.location.assign(`./xpath.html?type=${type}&seed=${seed}`);

@@ -14,7 +14,7 @@
 	"domain":"http://107.167.123.93:8080/news-parse-api/dailysta/domain",
 	"checklogin":"http://107.167.123.93:8080/news-parse-api/user/checkLogin",
 	"corpusSearch":"http://107.167.123.93:5505/socialdata-news-web-api/seed/search",
-	"topnews":"http://107.167.123.93:5505/socialdata-news-web-api/seed/seedtopnews",
+	"topnews":"http://107.167.123.93:5505/socialdata-news-web-api/seed/seednews",
 	"crawlstatis":"http://107.167.123.93:5505/socialdata-news-web-api/seed/crawlstat",
 	"extractEl":"http://107.167.123.93:5505/socialdata-news-web-api/news/parse",
 	"corCountry":"http://107.167.123.93:5505/socialdata-news-web-api/dailysta/country",

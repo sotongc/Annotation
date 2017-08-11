@@ -1,6 +1,6 @@
 <template>
 	<div class="queryBox">
-		<span v-if="linkname == 'topnews'" @click="backCorpus">back</span>
+		<span v-if="type == 1" @click="backCorpus">back</span>
 		<span v-else @click="back">back</span>
 		<span @click="goto">{{linkname}}</span>
 		<label>DateRange:</label>

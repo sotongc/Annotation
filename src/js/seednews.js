@@ -34,7 +34,12 @@ const $loading = Vue.extend(loading);
 
 
 let str = window.location.search;
-const seedURL=str.split('=')[1];
+var seedURL = '';
+var type = 0;
+if(str){
+	seedURL=str.split('&')[1].split('=')[1];
+	type=parseInt(str.split('&')[0].split('=')[1]);
+}
 /*
  * request function
  */
@@ -63,6 +68,7 @@ let __head = new $header({
 let __querytime = new $querytime({
 	el:'#querytime',
 	data: {
+		type:type,
 		query:query,
 		linkname:'crawlstat'
 	}
@@ -113,7 +119,11 @@ __querytime.$on('datequery:query',function(){
 	responseResult.init(1);
 });
 __querytime.$on('datequery:goto',function(){
-	window.location.assign('./crawlstat.html?type=0&seed='+seedURL)
+	if(type == 0){
+		window.location.assign('./crawlstat.html?type=0&seed='+seedURL);
+	}else{
+		window.location.assign('./crawlstat.html?type=1&seed='+seedURL);
+	}
 });
 
 /*
@@ -125,7 +135,7 @@ let responseResult={
 	init: function(num){
 		__loading.show=true;
 		let page = num || __pagination.currentPage;
-		dataSource = fetch(seedNewsRequest(api.seednews,JSON.stringify({
+		dataSource = fetch(seedNewsRequest(type==0?api.seednews:api.topnews,JSON.stringify({
 			'seed':seedURL,
 			'pageNo':page,
 			'limit':__pagination.pageItems,
@@ -135,6 +145,7 @@ let responseResult={
 			return res.json();
 		});
 		dataSource.then(function(data){
+			console.log(data);
 			__loading.show=false;
 			data = data.result;
 			__pagination.$data.totalNum=data.totalItemCount;
