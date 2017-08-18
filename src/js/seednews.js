@@ -37,7 +37,7 @@ let str = window.location.search;
 var seedURL = '';
 var type = 0;
 if(str){
-	seedURL=str.split('&')[1].split('=')[1];
+	seedURL=str.slice(13);
 	type=parseInt(str.split('&')[0].split('=')[1]);
 }
 /*
