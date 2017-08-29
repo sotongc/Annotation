@@ -95,7 +95,7 @@ let __pannel=new $pannel({
 	el:'#pannel',
 	data:{
 		type:0,
-		countries:['all','ke','ng','za','tz','gh','in','id','hindi'],
+		countries:['all','ke','ng','za','tz','gh','in','id','hindi','ru','ua','by'],
 		category:['all','political','sports','entertainment','game'],
 		query:query
 	}
