@@ -78,6 +78,15 @@ let __datetab = new $datetab({
 		},{
 			value:'hindi',
 			label:'hindi'
+		},{
+			value:'ru',
+			label:'ru'
+		},{
+			value:'ua',
+			label:'ua'
+		},{
+			value:'by',
+			label:'by'
 		}],
 		conditions:[{
 			value:'seed',
