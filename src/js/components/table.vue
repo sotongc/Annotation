@@ -26,12 +26,12 @@
 				</td>
 				<td>
 					<template v-if="title=='CORPUS LIST'">
-						<span class="btn" @click="toCrawlstatis(item['seed'])">crawlstat</span>
-						<span class="btn" @click="toTopNews(item['seed'])">topnews</span>
+						<a class="btn" target='_blank' :href="'./crawlstat.html?type=1&seed='+item['seed']">crawlstat</a>
+						<a class="btn" target='_blank' :href="'./seednews.html?type=1&seed='+item['seed']">topnews</a>
 					</template>
 					<template v-else>
-						<span class="btn" @click="toCrawlstat(item['seed'])">crawlstat</span>
-						<span class="btn" @click="toSeedNews(item['seed'])">seednews</span>
+						<a class="btn" target='_blank' :href="'./crawlstat.html?type=0&seed='+item['seed']">crawlstat</a>
+						<a class="btn" target='_blank' :href="'./seednews.html?type=0&seed='+item['seed']">seednews</a>
 					</template>
 				</td>
 			</tr>
@@ -69,18 +69,18 @@
 				    return n[1] ? n : '0' + n;
 				}
 			},
-			toCrawlstat:function(domain){
-				window.location.assign('./crawlstat.html?type=0&seed='+domain);
-			},
-			toCrawlstatis:function(domain){
-				window.location.assign('./crawlstat.html?type=1&seed='+domain);
-			},
-			toSeedNews: function(domain){
-				window.location.assign('./seednews.html?type=0&seed='+domain);
-			},
-			toTopNews: function(domain){
-				window.location.assign('./seednews.html?type=1&seed='+domain);
-			},
+//			toCrawlstat:function(domain){
+//				window.location.assign('./crawlstat.html?type=0&seed='+domain);
+//			},
+//			toCrawlstatis:function(domain){
+//				window.location.assign('./crawlstat.html?type=1&seed='+domain);
+//			},
+//			toSeedNews: function(domain){
+//				window.location.assign('./seednews.html?type=0&seed='+domain);
+//			},
+//			toTopNews: function(domain){
+//				window.location.assign('./seednews.html?type=1&seed='+domain);
+//			},
 			toXpath: function(seed,type){
 				window.location.assign(`./xpath.html?type=${type}&seed=${seed}`);
 			}
